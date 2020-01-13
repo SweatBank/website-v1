@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background: white;*/
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(auto,1fr) 350px 350px minmax(auto,1fr);
+    grid-template-rows: 220px 150px 80px 1fr;
+    /*grid-gap: 1px;*/
+}
+
+.item{
+    background: #8A94B9;
+    color: black;
+    font-family: calibri;
+    padding: 10px;
+    text-align: center;
+}
+
+.item1{ text-align: left; }
+
+.item2{
+    grid-column: span 2;
+    color: black;
+    font-size: 75px; font-weight: 900;
+    font-family: Calibri;
+}
+
+.item6, .item7{
+    text-align: center;
+    height: auto;
+}
+
+#home{
+    width: 60px;
+    height: 60px;
+}
+
+#record, #profile, #bet{
+    opacity: .3;
+}
+
+#dailyexercise, #weeklyexercise{
+    height: 100%;
+    width: auto;
+}
+
+
+/* want this to look like the "plan day" form input button, but instead be a hyperlink */
+/* also want to be able to style "Sign In" and "Sign Up" butons accordingly */
+
+#planday, #planweek{
+    padding: 7px 20px;
+    border-radius: 7px;
+    background: #323646;
+    font-size: 15px;
+    color: white;
+    border-color:#8A94B9;
+    text-align: center;
+    align: center;
+    align-self: center;
+}
+
+#planday:hover,#planweek:hover{
+    background: #364074;
+}
+
+.item10, .item11{
+    text-align: center;
+}
+
+.item3{
+    align: right;
+    text-align: right;
+}
+
+img{width: 40px; height: 40px;}
+a {text-decoration: none;}
+
+a:hover {
+  color: #364074;
+}
+
+svg {
+  height: 150px;
+  width: 150px;
+  align-items: center;
+}
+
+svg:hover {
+  fill: #364074;
+}

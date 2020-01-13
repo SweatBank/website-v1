@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome to SweatBank</title>
+    <link rel="stylesheet" type="text/css" href="grid_home.css" />
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+    <div class ="item item1"> </div>
+    <div class ="item item2"> </div>
+    <div class ="item item3"> </div>
+    <div class ="item item4"> </div>
+    <div class ="item item5"> </div>
+    <div class ="item item6">
+        <button onclick="window.location.href = 'file:grid_signin.html'" id="signin"> Sign In </button> <br/> <br/>
+        <button onclick="window.location.href = 'file:grid_signup.html'" id="signup"> Sign Up </button>
+    </div>
+    <div class ="item"> </div>
+    <div class ="item item8"> SweatBank </div>
+    <div class ="item"> </div>
+    <div class ="item item10"> </div>
+
+    <div class ="item item11">
+        <a class = "pagelink" href= "file:grid_plan.html" > <img class = "icon" src="icon_plan.svg"> </a>
+        <!-- Below is attempt to turn img tag with .svg into "inline svg" so that fill can change on hover. Not the most crucial effort but skill would be useful -->
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 29.659 44.874" height="169.603" width="112.096">
+            <a class = "pagelink" href= "file:grid_plan.html"></a>
+            <path d="M27.374 18.519a.739.739 0 0 0-.739.739v6.558a2.218 2.218 0 0 1-2.216 2.216H3.693a2.218 2.218 0 0 1-2.216-2.216V6.567a2.219 2.219 0 0 1 2.216-2.215h6.559a.739.739 0 1 0 0-1.478H3.693A3.697 3.697 0 0 0 0 6.567v19.25a3.697 3.697 0 0 0 3.693 3.693H24.42a3.697 3.697 0 0 0 3.693-3.694v-6.558a.739.739 0 0 0-.738-.739zm0 0"/><path d="M27.82.974a3.324 3.324 0 0 0-4.701 0L9.941 14.152a.738.738 0 0 0-.19.325l-1.733 6.256a.738.738 0 0 0 .91.91l6.256-1.734a.738.738 0 0 0 .325-.19L28.687 6.542a3.328 3.328 0 0 0 0-4.7zM11.55 14.632L22.336 3.846l3.478 3.479L15.028 18.11zm-.694 1.394l2.779 2.78L9.79 19.87zm16.786-10.53l-.783.784-3.479-3.479.784-.783a1.846 1.846 0 0 1 2.611 0l.867.867c.72.722.72 1.89 0 2.612zm0 0"/><text xml:space="preserve" style="line-height:1.25" x="11.583" y="82.806" font-style="normal" font-weight="400" font-size="10.583" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#000" fill-opacity="1" stroke="none" stroke-width=".265" transform="translate(-8.19 -37.963)"><tspan x="11.583" y="82.806" style="-inkscape-font-specification:Calibri" font-style="normal" font-variant="normal" font-weight="400" font-stretch="normal" font-size="10.583" font-family="Calibri" stroke-width=".265">PLAN</tspan></text><path d="M77.283 3.853c-1.32-.71-2.794.66-3.657 1.473-1.981 1.93-3.658 4.166-5.537 6.198-2.083 2.235-4.013 4.47-6.147 6.654-1.219 1.22-2.54 2.54-3.353 4.064-1.828-1.778-3.403-3.708-5.435-5.283-1.473-1.117-3.911-1.93-3.86.762.101 3.505 3.2 7.264 5.486 9.652.965 1.016 2.235 2.082 3.708 2.133 1.778.102 3.607-2.032 4.673-3.2 1.88-2.032 3.404-4.318 5.13-6.4 2.236-2.744 4.522-5.436 6.706-8.23 1.372-1.727 5.69-5.994 2.286-7.823zM51.529 17.518c-.051 0-.102 0-.204.05a2.472 2.472 0 0 1-.558-.203c.152-.101.406-.05.762.153z"/><text xml:space="preserve" style="line-height:1.25;-inkscape-font-specification:calibri" x="54.541" y="82.739" font-style="normal" font-variant="normal" font-weight="400" font-stretch="normal" font-size="10.583" font-family="calibri" letter-spacing="0" word-spacing="0" fill="#000" fill-opacity="1" stroke="none" stroke-width=".265" transform="translate(-8.626 -37.963)"><tspan x="54.541" y="82.739" style="-inkscape-font-specification:calibri" font-style="normal" font-variant="normal" font-weight="400" font-stretch="normal" font-size="10.583" font-family="calibri" stroke-width=".265">RECORD</tspan></text><g><text xml:space="preserve" style="line-height:1.25" x="107.421" y="82.687" font-style="normal" font-weight="400" font-size="10.583" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#000" fill-opacity="1" stroke="none" stroke-width=".265" transform="translate(-10.264 -37.963)"><tspan x="107.421" y="82.687" font-size="10.583" stroke-width=".265">PROFILE</tspan></text><path d="M119.274 14.099c3.353 0 6.072-3.303 6.072-7.376 0-4.074-.892-7.376-6.072-7.376S113.2 2.65 113.2 6.723c0 4.073 2.72 7.376 6.073 7.376zM107.804 25.36c0-.248-.002-.07 0 0zM130.743 25.554c.003-.068.001-.471 0 0z"/><path d="M130.73 25.063c-.112-7.097-1.04-9.119-8.131-10.398 0 0-.998 1.272-3.325 1.272s-3.325-1.272-3.325-1.272c-7.015 1.265-7.998 3.257-8.127 10.167-.01.564-.016.594-.018.528l.001.746s1.689 3.404 11.469 3.404 11.468-3.404 11.468-3.404v-.552c-.001.041-.005-.038-.012-.491z"/></g><g><text xml:space="preserve" style="line-height:1.25" x="169.066" y="82.837" font-style="normal" font-weight="400" font-size="10.583" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#000" fill-opacity="1" stroke="none" stroke-width=".265" transform="translate(-8.19 -37.963)"><tspan x="169.066" y="82.837" stroke-width=".265">BET</tspan></text><path d="M171.62 1.264c-7.787 0-14.122 6.336-14.122 14.123 0 7.787 6.335 14.123 14.123 14.123 7.787 0 14.122-6.336 14.122-14.123 0-7.787-6.335-14.123-14.122-14.123zm0 26.387c-6.762 0-12.263-5.502-12.263-12.264s5.501-12.264 12.264-12.264c6.762 0 12.264 5.502 12.264 12.264s-5.502 12.264-12.264 12.264z"/><path d="M172.55 14.553V9.277c.526.195.985.553 1.304 1.038a.93.93 0 0 0 1.552-1.022 4.523 4.523 0 0 0-2.856-1.945V5.872a.93.93 0 1 0-1.859 0v1.473a4.54 4.54 0 0 0-3.607 4.438c0 2.182 1.55 4.01 3.607 4.438v5.276a2.673 2.673 0 0 1-1.303-1.038.93.93 0 1 0-1.553 1.022 4.523 4.523 0 0 0 2.856 1.945v1.476a.93.93 0 1 0 1.859 0v-1.473a4.54 4.54 0 0 0 3.607-4.438c0-2.182-1.55-4.01-3.607-4.438zm-3.607-2.77c0-1.149.73-2.128 1.748-2.506v5.012a2.677 2.677 0 0 1-1.748-2.506zm3.607 9.714v-5.012a2.677 2.677 0 0 1 1.748 2.506c0 1.149-.73 2.128-1.748 2.506z"/></g>
+        </svg> -->
+    </div>
+
+    <div class ="item item12">
+        <a class = "pagelink" href= "LINK" > <img class = "icon" src="icon_record.svg"> </a>
+
+    </div>
+
+    <div class ="item item13">
+        <a class = "pagelink" href= "LINK" > <img class = "icon" src="icon_profile.svg"> </a>
+    </div>
+
+    <div class ="item item14">
+        <a class = "pagelink" href= "LINK" > <img class = "icon" src="icon_bet.svg"> </a>
+    </div>
+
+    <div class ="item item15"> </div>
+    <div class ="item item16"> </div>
+    <div class ="item item17"> </div>
+    <div class ="item item18"> </div>
+    <div class ="item item19"> </div>
+    <div class ="item item20"> </div>
+    <div class ="item item21"> </div>
+
+</div>
+
+</body>
+</html>

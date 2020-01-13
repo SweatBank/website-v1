@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="grid_signup.css" />
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+
+    <div class ="item item1">
+        <a class = "pagelink" href= "file:grid_home.html" ><img src="home.svg"> </a>
+    </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item blankrow">  </div>
+    <div class ="item item2">
+        Welcome to SweatBank
+    </div>
+    <div class ="item item3">  </div>
+    <div class ="item item4">  </div>
+    <div class ="item item5"> REQUIRED </div>
+    <div class ="item item6">  </div>
+    <div class ="item item7">  </div>
+    <div class ="item item8">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="firstname" placeholder="First name">
+        </form>
+    </div>
+    <div class ="item item9">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="lastname" placeholder="Last name">
+        </form>
+    </div>
+    <div class ="item item10"> </div>
+    <div class ="item item11"> </div>
+    <div class ="item item12">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="email" placeholder="Email address">
+        </form>
+    </div>
+    <div class ="item item13">
+        <form action="userform.php" method ="get">
+            <input type ="password" name ="password" placeholder="Password">
+        </form>
+    </div>
+    <div class ="item item14"> </div>
+    <div class ="item item15"> </div>
+    <div class ="item item16"> OPTIONAL </div>
+
+    <div class ="item item17">
+        <p id="pop-up-link"> Why do we ask? </p>
+    </div>
+
+    <div class ="item item18"> </div>
+    <div class ="item item19"> </div>
+    <div class ="item item19">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="sex" placeholder="Sex">
+        </form>
+    </div>
+    <div class ="item item20">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="age" placeholder="Age">
+        </form>
+    </div>
+    <div class ="item item21">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="height" placeholder="Height">
+        </form>
+    </div>
+    <div class ="item item22">
+        <form action="userform.php" method ="get">
+            <input type ="text" name ="weight" placeholder="Weight">
+        </form>
+    </div>
+    <div class ="item item24"> </div>
+    <div class ="item item25"> </div>
+    <div class ="item item26"> </div>
+    <div class ="item item27"> </div>
+    <div class ="item item28"> </div>
+    <div class ="item item29"> </div>
+    <div class ="item item30"> </div>
+    <div class ="item item31"> </div>
+    <div class ="item item32"> </div>
+    <div class ="item item33"> </div>
+    <div class ="item item34"> </div>
+
+    <div class ="pop-up-message"> POP UP MESSAGE HERE
+        <p> asdaldkj </p>
+        <textarea name ="message" placeholder="Write a message!"></textarea>
+    </div>
+
+    <div class ="item item35">
+         <form action="userform.php" method ="get">
+            <input type="submit" name="next" id="next">
+        </form>
+    </div>
+    <div class ="item item36"> </div>
+
+
+<!-- document.ready(function()) ensures that function loads after the rest of the document
+    has loaded. Not necessary since the script tags are at the bottom of the document.
+
+    video link: http://youtube.com/watch?v=6HWaZIfUZVg -->
+
+<!-- QFS: Sam how to make the pop-up-link element clickable without turning it into a hyperlink -->
+
+<script>
+$(document).ready(function(){
+    $("#pop-up-link").click(function(){
+        $("pop-up-message").fadeToggle(500);
+    });
+});
+</script>
+
+</body>
+</html>

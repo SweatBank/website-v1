@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    /*grid-template-columns: repeat(6,1fr);*/
+    grid-template-columns: 300px 150px 150px 150px 150px auto;
+    grid-template-rows: auto auto auto auto;
+    /*grid-gap: 5px;*/
+}
+
+.item{
+    background: #8A94B9;
+    color: black;
+    padding: 10px;
+}
+
+.item15{
+    font-family: TW Cen Mt;
+    grid-column: span 2;
+}
+
+.item20{
+    font-family: TW Cen Mt;
+    grid-column: span 2;
+}
+
+.item8{
+    grid-column: span 4;
+    color: black;
+    font-size: 55px;
+    font-weight: 900;
+    font-family: Calibri;
+    text-align: left;
+}
+
+.item11, .item12{
+    grid-column: span 2;
+}
+
+input{
+    width: 100%;
+    border-color: black;
+    text-indent: 10px;
+    border-width: 1px;
+    background: #8A94B9;
+    height: 4vh;
+    align: center;
+    font-family: TW Cen Mt;
+    font-size: 2vh;
+}
+
+#next{
+    border-radius: 7px;
+    background: #323646;
+    color: white;
+    border-color:#8A94B9;
+}
+
+/*want to target submit button to format differently from other input fields (email & password)*/
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-indent: 10px;
+  color: #515563;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+}
+
+/*do not want to target all hyperlinks, want to target only hyperlinks within cell*/
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 2vh;
+    font-weight: 400;
+    font-family: TW Cen Mt;
+}
+
+a:hover {
+  color: #364074;
+}
+
+svg:hover {
+  fill: red;
+}
+

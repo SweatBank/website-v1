@@ -1,0 +1,93 @@
+
+/* DEFAULT SWEATBANK PAGE PROPERTIES */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background: white;*/
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns */
+
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(auto,1fr) repeat(5,150px) minmax(auto,1fr);
+    grid-template-rows: 210px 70px 55px 55px 1fr;
+    /*grid-gap: 1px;*/
+}
+
+.item{
+    background: #8A94B9;
+    color: black;
+    font-family: calibri;
+    padding: 10px;
+    text-align: center;
+}
+
+/* UNIQUE PAGE PROPERTIES */
+
+.item1{text-align: left;}
+
+#home{
+    width: 60px;
+    height: 60px;
+    /*justify-content: left; */ /*this didn't work, but need a more clean way to justify images without justifying item containers*/
+}
+
+.item2{
+    grid-column: span 5;
+    color: black;
+    font-size: 75px; font-weight: 900;
+    font-family: Calibri;
+}
+
+#record, #profile, #bet{
+    opacity: .3;
+}
+
+.item3{text-align: right;}
+
+img{width: 40px; height: 40px;}
+a {text-decoration: none;}
+
+.item5{
+    grid-column: span 5; color: black;
+    font-size: 20px;
+    font-family: TW Cen MT;
+}
+
+#monday, #tuesday, #wednesday ,#thursday, #friday{
+    font-family: Calibri;
+    padding: 7px 19px;
+    border-radius: 9px; border-width: 1px; border-color: black;
+    font-size: 14px; font-weight: 600;
+    color: black; background: #8A94B9;
+}
+
+#monday:hover, #tuesday:hover, #wednesday:hover, #thursday:hover, #friday:hover{
+    color: #364074; border-color: #364074;
+}
+
+#saturday, #sunday{
+    font-family: Calibri;
+    padding: 7px 19px;
+    border-radius: 9px; border-width: 1px; border-color: black;
+    font-size: 14px; font-weight: 600;
+    color: #8A94B9; background: black;
+}
+
+#saturday:hover, #sunday:hover{
+    color: #8A94B9; background: #364074; border-color: #364074;
+}
+
+#monday, #tuesday, #wednesday ,#thursday, #friday, #saturday, #sunday{cursor: pointer;}
+

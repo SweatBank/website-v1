@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background: white;*/
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+.wrapper{
+    width: 100%; min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 150px auto auto 1fr; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
+    /*grid-gap: 3px;*/
+}
+
+.item{
+    background: #8A94B9; color: black; padding: 10px; text-align: center;
+}
+
+#signin{
+    font-family: Calibri;
+    padding: 7px 19px;
+    border-radius: 9px; border-width: 1px; border-color: black;
+    font-size: 22px; font-weight: 600;
+    color: black; background: #8A94B9;
+}
+
+#signin:hover{ color: #364074; border-color: #364074; }
+
+#signup{
+    font-family: Calibri;
+    padding: 7px 15px;
+    border-radius: 9px; border-width: 1px; border-color: black;
+    font-size: 22px; font-weight: 600;
+    color: #8A94B9; background: black;
+}
+
+#signup:hover{ background: #364074; border-color: #364074; }
+
+.item8{
+    grid-column: span 4;
+    color: black;
+    font-size: 12vw;
+    font-weight: 900;
+    font-family: Calibri;
+    text-align: center;
+}
+
+img{ height: calc(50px + 3vw); width: calc(50px + 3vw); }
+img:hover{ height: calc(55px + 3vw); width: calc(55px + 3vw); }
+
+/*svg { height: 8vw; width: auto; }
+svg:hover { fill: #364074; }*/
+
+
+

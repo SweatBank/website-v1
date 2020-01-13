@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background: #8A94B9;*/
+    background: white;
+    min-height: 100%;
+}
+
+.wrapper{
+    width: 100%; min-height: 100%; margin: 0 auto; display: grid;
+    grid-template-columns: minmax(auto,1fr) repeat(3,170px) minmax(auto,1fr);
+    grid-template-rows: 220px 170px 170px auto 1fr;
+    grid-gap: 1px;
+}
+
+.item{
+    background: #8A94B9;
+    color: black;
+    font-family: calibri;
+    padding: 10px;
+    text-align: center;
+}
+
+#home{width: 60px; height: 60px;}
+.item1{text-align: left;}
+
+.item2{
+    grid-column: span 3;
+    color: black;
+    font-size: 75px; font-weight: 900;
+    font-family: Calibri;
+}
+
+/*not sure why spaces between icons are underlined in blue*/
+.item3{
+    text-align: right;
+}
+
+#record, #profile, #bet{
+    opacity: .3;
+}
+
+
+/* these are not links, but need to be clickable and functional*/
+#interval, #class, #sets_reps, #sports, #otherexercise{
+    height: 85px;
+    width: 85px;
+}
+
+/*  Formatted differently because text and icon are combined into a single SVG object.
+This is how all of the icons should end up looking, do this when you're bored sometime  */
+
+#paced{
+    height: 130px;
+    width: auto;
+    align: center;
+}
+
+img{
+    width: 40px;
+    height: 40px;
+}
+
+.item5,.item6,.item7,.item10,.item11,.item12{font-family: Tw Cen Mt; font-size: 20px;}
+
+.item15{
+    grid-column: span 2;
+    font-family: TW Cen Mt;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 300;
+    color: black;
+}
+
+/* CHANGE FORMATTING TO MATCH "PLAN" STARTUP PAGE BUTTONS */
+
+input{
+    width: 100%;
+    border-color: black;
+    text-indent: 10px;
+    border-width: 1px;
+    background: #8A94B9;
+    height: 4vh;
+    align: center;
+    font-family: TW Cen Mt;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#next{
+    border-radius: 7px;
+    background: #323646;
+    color: white;
+    border-color:#8A94B9;
+}
+
+/* CHANGE FORMATTING TO MATCH "PLAN" STARTUP PAGE BUTTONS */
+
+
+a {text-decoration: none;}
+
+a:hover {
+  color: #364074;
+}
+
+svg {
+  height: 130px;
+  width: auto;
+  align-items: center;
+  cursor:pointer;
+}
+
+svg:hover {
+  fill: #364074;
+}
+
+/* properties affected by jQuery!! */
+
+/* The presence of this class is supposed to be triggered
+by a JQuery script but it does not seem to be working  */
+
+/*#interval{border:solid 1px red; margin:10px;}
+.selected{
+    box-shadow:0px 12px 22px 1px #333;
+    background: #A1EFC2;
+}*/

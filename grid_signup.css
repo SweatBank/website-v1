@@ -1,0 +1,114 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+.wrapper{
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 150px 150px 150px 150px auto;
+    /*grid-template-rows: auto auto auto auto auto;*/
+    /*grid-gap: 5px;*/
+}
+
+.item{
+    background: #8A94B9;
+    color: black;
+    padding: 10px;
+}
+
+.item2{
+    grid-column: span 4;
+    color: black;
+    font-size: 55px;
+    font-weight: 900;
+    font-family: Calibri;
+    text-align: left;
+}
+
+.item5{
+    grid-column: span 4;
+    font-family: TW Cen Mt;
+    font-size: auto;
+    font-weight: 600;
+    color: black;
+}
+
+.item16{
+    grid-column: span 2;
+    font-family: TW Cen Mt;
+    font-size: auto;
+    font-weight: 600;
+    color: black;
+}
+
+.item17{
+    grid-column: span 2;
+    font-family: TW Cen Mt;
+    text-align: right;
+    font-size: auto;
+    font-weight: 600;
+    color: black;
+}
+
+.item8, .item9, .item12, .item13, .item16{
+    grid-column: span 2;
+}
+
+#pop-up-link{
+    font-size: 800;
+}
+
+.pop-up-message{
+    position: absolute;
+    border-color: : black;
+
+    /*offset values*/
+    top: 200px; left: 200px;
+    height: 400px; width: 400px;
+    display:none;
+
+    /*positioning relative to other items - need to figure out how to do this*/
+}
+
+#next{
+    border-radius: 7px;
+    background: #323646;
+    color: white;
+    border-color:#8A94B9;
+}
+
+input{
+    width: 100%;
+    border-color: black;
+    text-indent: 10px;
+    border-width: 1px;
+    background: #8A94B9;
+    height: 4vh;
+    align: center;
+    font-family: TW Cen Mt;
+    font-size: 2vh;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 2vh;
+    font-weight: 400;
+    font-family: TW Cen Mt;
+    text-align: center;
+    vertical-align: center;
+}
+
+img{
+    width: 50px;
+    height: 50px;
+}
