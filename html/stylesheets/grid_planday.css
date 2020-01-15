@@ -5,8 +5,8 @@
 }
 
 body{
-    /*background: #8A94B9;*/
-    background: white;
+    background: #8A94B9;
+    /*background: white;*/
     min-height: 100%;
 }
 
@@ -14,7 +14,7 @@ body{
     width: 100%; min-height: 100%; margin: 0 auto; display: grid;
     grid-template-columns: minmax(auto,1fr) repeat(3,170px) minmax(auto,1fr);
     grid-template-rows: 220px 170px 170px auto 1fr;
-    grid-gap: 1px;
+    /*grid-gap: 1px;*/
 }
 
 .item{
@@ -78,24 +78,16 @@ img{
 
 /* CHANGE FORMATTING TO MATCH "PLAN" STARTUP PAGE BUTTONS */
 
-input{
-    width: 100%;
-    border-color: black;
-    text-indent: 10px;
-    border-width: 1px;
-    background: #8A94B9;
-    height: 4vh;
-    align: center;
-    font-family: TW Cen Mt;
-    font-size: 15px;
-    cursor: pointer;
-}
 
 #next{
     border-radius: 7px;
+    padding: 7px 19px;
     background: #323646;
     color: white;
     border-color:#8A94B9;
+    cursor: pointer;
+    font-family: TW Cen Mt;
+    font-size: 15px;
 }
 
 /* CHANGE FORMATTING TO MATCH "PLAN" STARTUP PAGE BUTTONS */

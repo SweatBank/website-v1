@@ -91,3 +91,14 @@ a {text-decoration: none;}
 
 #monday, #tuesday, #wednesday ,#thursday, #friday, #saturday, #sunday{cursor: pointer;}
 
+#next{
+    border-radius: 7px;
+    padding: 7px 19px;
+    background: #323646;
+    color: white;
+    border-color:#8A94B9;
+    cursor: pointer;
+    font-family: TW Cen Mt;
+    font-size: 15px;
+}
+
