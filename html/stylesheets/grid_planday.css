@@ -13,7 +13,7 @@ body{
 .wrapper{
     width: 100%; min-height: 100%; margin: 0 auto; display: grid;
     grid-template-columns: minmax(auto,1fr) repeat(3,170px) minmax(auto,1fr);
-    grid-template-rows: 220px 170px 170px auto 1fr;
+    grid-template-rows: 220px 170px 170px auto auto auto;
     /*grid-gap: 1px;*/
 }
 

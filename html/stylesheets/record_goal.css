@@ -1,0 +1,172 @@
+
+.wrapper{
+    width: 100%; min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: 80px 220px 180px minmax(220px,auto) 100px; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
+    /*grid-gap: 3px;*/
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+#goal, #baseline, #timeframe, #incentive, #notes{ opacity: .3; }
+
+#weightError, #unitsError, #repsError, #baselineWeightError{
+    visibility: hidden;
+    color: #3C2D50;
+    font-size: 12px;
+    font-family: Courier;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /*background: white;*/
+    background: #8A94B9;
+    min-height: 100%;
+}
+
+img{ width: 50px; height: 50px; }
+
+a{ text-decoration: none; }
+
+#profileIcon{ opacity: .6; }
+#profileIcon:hover{ opacity: .9; }
+
+#home{
+    color: #8A94B9;
+    font-family: Calibri;
+    font-weight: 600;
+    font-size: 45px;
+}
+
+#home:hover{ color: #3C2D50; }
+
+#navBarLeft{
+    grid-column: span 1;
+    padding-top: 10px;
+    padding-left: 16px;
+    text-align: left;
+    background: #C6C0CA; opacity: .9;
+    top: 0;
+}
+
+#navBarRight{
+    grid-column: span 1;
+    padding-top: 12px;
+    padding-right: 15px;
+    text-align: right;
+    background: #C6C0CA; opacity: .9;
+    top: 0;
+}
+
+#navBarMid{
+    grid-column: span 4;
+    text-align: center;
+    background: #C6C0CA; opacity: .9;
+    top: 0;
+}
+
+.item{
+    background: white;
+    /*background: #8A94B9;*/
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-family: Tw Cen Mt;
+}
+
+.item1{
+    grid-column: span 6;
+}
+
+.item2, .item3, .item4, .item5, .item6, .item7, .item8, .item9{
+    grid-column: span 3;
+}
+
+#incentiveDescription{
+    display: inline-block;
+    /*text-indent: 100px;*/
+}
+
+#userInput{
+    display:inline;
+    width: auto;
+    /*margin: 6px;*/
+}
+
+#goalPreface,#baselinePreface, #baselineExercise, #baselineUnits, #goalTimes, #baselineTimes, #baselineReps{
+    font-family: TW Cen Mt;
+    font-size:22px;
+}
+
+.exerciseInput, .baselineInput{
+    font-family: Courier;
+    font-size: 20px;
+    display: inline;
+    width: auto;
+    margin: 0px;
+    /*border: none;*/
+    background: none;
+    text-align: left;
+    text-indent: 12px;
+    height: 4vh;
+    border: 1px;
+    border-radius: 12px;
+    border-top-right-radius: 6px;
+    background: #C6C0CA;
+}
+
+.notesInput{
+    font-family: Courier;
+    font-size: 12px;
+    width: 330px;
+    height: 110px;
+    padding: 10px;
+    margin: 0px;
+    border-color: black;
+    background: none;
+    text-align: left;
+}
+
+.notesInput:focus{
+    outline: none;
+    border-color: #C6C0CA;
+}
+
+.exerciseInput:focus, .baselineInput:focus{
+    outline: none;
+    border-color: #8A94B9;
+}
+
+.sectionTitle{
+    font-size: 3vh;
+    font-family: Calibri;
+    font-weight: 800;
+}
+
+.timeframe{
+    font-family: Tw Cen Mt;
+    padding: 7px 13px;
+    border-radius: 9px; border-width: 1px; border-color: black;
+    font-size: 14px;
+    /*font-weight: 600;*/
+    color: white; background: #282933;
+}
+
+.timeframe:focus{ outline: none; }
+.timeframe:hover{ cursor: pointer; }
+
+/*svg { height: 8vw; width: auto; }
+svg:hover { fill: #364074; }*/
+
+
+

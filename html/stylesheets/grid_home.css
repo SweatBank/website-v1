@@ -31,8 +31,6 @@ body{
     color: black; background: #8A94B9;
 }
 
-#signin:hover{ color: #364074; border-color: #364074; }
-
 #signup{
     font-family: Calibri;
     padding: 7px 15px;
@@ -40,6 +38,8 @@ body{
     font-size: 22px; font-weight: 600;
     color: #8A94B9; background: black;
 }
+
+#signin:hover{ color: #364074; border-color: #364074; }
 
 #signup:hover{ background: #364074; border-color: #364074; }
 
