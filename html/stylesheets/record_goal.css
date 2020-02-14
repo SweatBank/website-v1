@@ -4,7 +4,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(6,1fr);
-    grid-template-rows: 80px 220px 180px minmax(220px,auto) 100px; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
+    grid-template-rows: 80px 200px 180px minmax(220px,auto) 100px; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
     /*grid-gap: 3px;*/
 }
 
@@ -15,7 +15,7 @@
 
 #goal, #baseline, #timeframe, #incentive, #notes{ opacity: .3; }
 
-#weightError, #unitsError, #repsError, #baselineWeightError{
+#distanceError, #weightError, #unitsError, #repsError, #timeError, #baselineWeightError, #baselineTimeError, #baselineRepsError{
     visibility: hidden;
     color: #3C2D50;
     font-size: 12px;
@@ -79,7 +79,7 @@ a{ text-decoration: none; }
     background: white;
     /*background: #8A94B9;*/
     color: black;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
     font-family: Tw Cen Mt;
 }
@@ -103,7 +103,7 @@ a{ text-decoration: none; }
     /*margin: 6px;*/
 }
 
-#goalPreface,#baselinePreface, #baselineExercise, #baselineUnits, #goalTimes, #baselineTimes, #baselineReps{
+#goalPreface,#baselinePreface, #baselineExercise, #baselineUnits, #baselineDistance, #goalTimes, #goalMin, #goalIn, #baselineTimes, #baselineIn, #goalMin, #baselineMin, #baselineLiftReps{
     font-family: TW Cen Mt;
     font-size:22px;
 }

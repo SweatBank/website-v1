@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Record a Goal</title>
+    <title>Bodyweight Goal</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/record_goal.css" />
 
     <!-- Fonts are hard :( -->
@@ -31,49 +31,35 @@
     <div class ="item item1">
         <br>
 
-        <span class = "sectionTitle"> <img src="images/dumbbell.svg" id="goal"> </span> <br> <br> <br>
+        <span class = "sectionTitle"> <img src="images/bodyweight2.svg" id="goal"> </span> <br> <br>
 
-        <span id = "goalPreface"> My goal is to </span>
-
-        <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="squat">
-        </form>
-
-        <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "weight" type ="text" placeholder="100">
-        </form>
-
-        <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "units" type ="text" placeholder="lbs/kg">
-        </form>
+        <span id = "goalPreface"> My goal is to be able to do </span>
 
         <form id = "userInput" action="" method ="">
             <input class ="exerciseInput" id = "reps" type ="text" placeholder="8">
         </form>
 
-        <span id = "goalTimes"> times </span> <br><br>
+        <form id = "userInput" action="" method ="">
+            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="pull ups">
+        </form> <br><br>
 
         <ul id = "errorsList">
-            <li id = "weightError"> make sure that the weight is a number! </li>
-            <li id = "unitsError"> units should either be "lbs" or "kg" </li>
-            <li id = "repsError"> make sure that the reps are a number! </li>
+            <li id = "repsError"> make sure that your reps are a number! </li>
         </ul>
     </div>
 
-    <div class ="item item3">
+    <div class ="item item2">
         <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br> <br>
-        <span id = "baselinePreface"> I can currently </span>
-        <span id = "baselineExercise"> squat </span>
+        <span id = "baselinePreface"> I can currently do </span>
+
         <form id = "userInput" action="" method ="">
-            <input class ="baselineInput" id = "baselineWeight" type ="text" placeholder="75">
-        </form>
-        <span id = "baselineUnits"> lbs/kg </span>
-        <span id = "baselineReps"> 8 </span>
-        <span id = "baselineTimes"> times </span> <br><br>
-        <span id = "baselineWeightError"> make sure that the weight is a number! </span>
+            <input class ="baselineInput" id = "baselineReps" type ="text" placeholder="6">
+        </form></span>
+        <span id = "baselineExercise"> pull ups </span> <br> <br>
+        <span id = "baselineRepsError"> make sure that your reps are a number! </span>
     </div>
 
-    <div class ="item item2">
+    <div class ="item item3">
         <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe"> </span> <br> <br> <br>
         <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
         <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
@@ -152,13 +138,7 @@ function replaceBaseline(){
     if($('#exercise').val().length>=1){
         $('#baselineExercise').html($('#exercise').val())
     } else {
-        $('#baselineExercise').html('squat')
-    }
-
-    if($('#units').val().length>=1){
-        $('#baselineUnits').html($('#units').val())
-    } else {
-        $('#baselineUnits').html('lbs')
+        $('#baselineExercise').html('pull ups')
     }
 
     if($('#reps').val().length>=1){
@@ -193,36 +173,22 @@ function toggleButtonColor(){
 
 function checkError(){
 
-    if($("#weight").val().length>0 & isNaN($("#weight").val())){
-        $("#weightError").css("visibility","visible");
-    } else {
-        // $("#errorsList li").eq(1).remove(); --> attempt to dynamically remove list items so that list always appear from same position under text
-        $("#weightError").css("visibility","hidden");
-    }
-
-    if($("#units").val().length>0 & $("#units").val() != "kg" & $("#units").val() != "lbs"){
-        $("#unitsError").css("visibility","visible");
-    }
-    else {
-        $("#unitsError").css("visibility","hidden");
-    }
-
     if($("#reps").val().length>0 & isNaN($("#reps").val())){
         $("#repsError").css("visibility","visible");
     } else {
         $("#repsError").css("visibility","hidden");
     }
 
-    if($("#baselineWeight").val().length>0 & isNaN($("#baselineWeight").val())){
-        $("#baselineWeightError").css("visibility","visible");
+    if($("#baselineReps").val().length>0 & isNaN($("#baselineReps").val())){
+        $("#baselineRepsError").css("visibility","visible");
     } else {
-        $("#baselineWeightError").css("visibility","hidden");
+        $("#baselineRepsError").css("visibility","hidden");
     }
 
 }
 
 function fillIcons() {
-    if($("#exercise").val().length>0 & $("#weight").val().length>0 & $("#weight").val()>0 & $("#reps").val().length>0 & $("#reps").val()>0 & ($("#units").val() == "kg" | $("#units").val() == "lbs")){
+    if($("#exercise").val().length>0 & $("#reps").val().length>0 & $("#reps").val()>0){
         $("#goal").css("opacity",1)
         $("#goal").css("width","55px")
         $("#goal").css("height","55px")
@@ -232,7 +198,7 @@ function fillIcons() {
         $("#goal").css("height","50px")
     }
 
-    if($("#baselineWeight").val().length>0 & $("#baselineWeight").val()>0){
+    if($("#baselineReps").val().length>0 & $("#baselineReps").val()>0){
         $("#baseline").css("opacity",1)
         $("#baseline").css("width","55px")
         $("#baseline").css("height","55px")

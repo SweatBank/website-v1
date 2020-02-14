@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tempo Goal</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal.css" />
+
+    <!-- Fonts are hard :( -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:4' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+    <div class ="item item0 banner" id ="navBarLeft">
+        <a class = "pagelink" href= "file:sweatbank_home.html"> <span id ="home"> sweatbank </span> </a>
+    </div>
+
+    <div class ="item item0 banner" id ="navBarMid">
+
+    </div>
+
+    <div class ="item item0 banner" id ="navBarRight">
+        <a class = "pagelink" href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a>
+    </div>
+
+    <div class ="item item1">
+        <br>
+
+        <span class = "sectionTitle"> <img src="images/tempo.svg" id="goal"> </span> <br> <br>
+
+        <span id = "goalPreface"> My goal is to </span>
+
+        <form id = "userInput" action="" method ="">
+            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="run">
+        </form>
+
+        <form id = "userInput" action="" method ="">
+            <input class ="exerciseInput" id = "distance" type ="text" placeholder="4">
+        </form>
+
+        <form id = "userInput" action="" method ="">
+            <input class ="exerciseInput" id = "units" type ="text" placeholder="mi/km">
+        </form>
+
+        <span id = "goalIn"> in </span>
+
+        <form id = "userInput" action="" method ="">
+            <input class ="exerciseInput" id = "time" type ="text" placeholder="30">
+        </form>
+
+        <span id = "goalMin"> minutes </span> <br><br>
+
+        <ul id = "errorsList">
+            <li id = "distanceError"> make sure that the distance is a number! </li>
+            <li id = "unitsError"> units should either be "mi" or "km" </li>
+            <li id = "timeError"> make sure that your time is a number! </li>
+        </ul>
+    </div>
+
+    <div class ="item item2">
+        <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br> <br>
+        <span id = "baselinePreface"> I can currently </span>
+        <span id = "baselineExercise"> run </span>
+        <span id = "baselineDistance"> 4 </span>
+        <span id = "baselineUnits"> mi/km </span>
+        <span id = "baselineIn"> in </span>
+
+        <form id = "userInput" action="" method ="">
+            <input class ="baselineInput" id = "baselineTime" type ="text" placeholder="40">
+        </form>
+        <span id = "baselineMin"> minutes </span> <br><br>
+        <span id = "baselineTimeError"> make sure that your time is a number! </span>
+    </div>
+
+    <div class ="item item3">
+        <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe"> </span> <br> <br> <br>
+        <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
+        <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
+        <button class = "timeframe" id="oneMonth"> 1 month </button>
+
+    </div>
+
+    <div class ="item item4">
+        <span class = "sectionTitle"> <img src="images/incentive.svg" id="incentive"> </span> <br><br>
+        <span id = "incentiveDollarSign"> $ </span> <span id = "incentiveAmount"></span> <br> <br>
+        <span id = "incentiveDescription">
+            This is how much you'll put on the line for extra motivation. If you achieve your goal, you will be paid back in full. If you don't achieve your goal, but make progress, you'll get paid back based on how close you got. 90% of the remainder will go to the charity of your choice, and 10% will be used to support our team :D
+        </span>
+    </div>
+
+    <div class ="item item5">
+        <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes"> </span> <br> <br> <br>
+
+        <form id = "userInput" action="" method ="">
+            <textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea>
+        </form>
+
+    </div>
+
+    <div class ="item item6"></div>
+    <div class ="item item7"></div>
+    <div class ="item item8"></div>
+    <div class ="item item9"></div>
+
+<script>
+
+console.log($('#exercise').attr('placeholder').length);
+console.log($('#oneWeek').css('background-color'));
+
+
+function changeIncentiveAmount(){
+    if($("#oneWeek").hasClass("selected")){
+        $("#incentiveAmount").html(5)
+    } else if ($("#twoWeeks").hasClass("selected")){
+        $("#incentiveAmount").html(10)
+    } else if ($("#oneMonth").hasClass("selected")){
+        $("#incentiveAmount").html(20)
+    } else {
+        $("#incentiveAmount").html("")
+    }
+}
+
+function focusInput(){
+    $("#exercise").focus()
+}
+
+function resizeInput() {
+    if($(this).val().length>=1){
+        $(this).attr('size', $(this).val().length+2); // buffer can be added if need be (3 = 3 pixels)
+    } else {
+        $(this).attr('size', $(this).attr('placeholder').length+2);
+    }
+}
+
+function startSizeInput() {
+    $(this).attr('size', $(this).attr('placeholder').length+2);
+}
+
+function changeminutes(){
+    if ($('#time').val()!=1){
+        $('#goalMin').html('minutes')
+    } else {
+        $('#goalMin').html('minute')
+    }
+}
+
+function changeBaselineMinutes(){
+    if ($('#baselineTime').val()!=1){
+        $('#baselineMin').html('minutes')
+    } else {
+        $('#baselineMin').html('minute')
+    }
+}
+
+function replaceBaseline(){
+    if($('#exercise').val().length>0){
+        $('#baselineExercise').html($('#exercise').val())
+    } else {
+        $('#baselineExercise').html('run')
+    }
+
+    if($('#distance').val().length>0){
+        $('#baselineDistance').html($('#distance').val())
+    } else {
+        $('#baselinedistance').html(4)
+    }
+
+    if($('#units').val().length>0){
+        $('#baselineUnits').html($('#units').val())
+    } else {
+        $('#baselineUnits').html('mi/km')
+    }
+
+    if($('#time').val().length>0){
+        $('#baselineTime').html($('#time').val())
+    } else {
+        $('#baselineTime').html('30')
+    }
+}
+
+function toggleButtonColor(){
+    if ($(this).hasClass("selected")){
+
+        $(this).css("background-color","#282933")
+        $(this).css("border-color","#282933")
+        $(this).css("color","white")
+        $(this).removeClass("selected")
+    } else {
+
+        $(this).css("background-color","#8A94B9")
+        $(this).css("border-color","#8A94B9")
+        $(this).css("color","black")
+        $(this).addClass("selected")
+
+        // it worked!
+        $(".timeframe").not(this).css("background-color","#282933")
+        $(".timeframe").not(this).css("border-color","#282933")
+        $(".timeframe").not(this).css("color","white")
+        $(".timeframe").not(this).removeClass("selected")
+    }
+}
+
+function checkError(){
+
+    if($("#distance").val().length>0 & isNaN($("#distance").val())){
+        $("#distanceError").css("visibility","visible");
+    } else {
+        // $("#errorsList li").eq(1).remove(); --> attempt to dynamically remove list items so that list always appear from same position under text
+        $("#distanceError").css("visibility","hidden");
+    }
+
+    if($("#units").val().length>0 & $("#units").val() != "km" & $("#units").val() != "mi"){
+        $("#unitsError").css("visibility","visible");
+    }
+    else {
+        $("#unitsError").css("visibility","hidden");
+    }
+
+    if($("#time").val().length>0 & isNaN($("#time").val())){
+        $("#timeError").css("visibility","visible");
+    } else {
+        $("#timeError").css("visibility","hidden");
+    }
+
+    if($("#baselineTime").val().length>0 & isNaN($("#baselineTime").val())){
+        $("#baselineTimeError").css("visibility","visible");
+    } else {
+        $("#baselineTimeError").css("visibility","hidden");
+    }
+
+}
+
+function fillIcons() {
+    if($("#exercise").val().length>0 & $("#distance").val().length>0 & $("#distance").val()>0 & $("#time").val().length>0 & $("#time").val()>0 & ($("#units").val() == "km" | $("#units").val() == "mi")){
+        $("#goal").css("opacity",1)
+        $("#goal").css("width","55px")
+        $("#goal").css("height","55px")
+    } else {
+        $("#goal").css("opacity",.3)
+        $("#goal").css("width","50px")
+        $("#goal").css("height","50px")
+    }
+
+    if($("#baselineTime").val().length>0 & $("#baselineTime").val()>0){
+        $("#baseline").css("opacity",1)
+        $("#baseline").css("width","55px")
+        $("#baseline").css("height","55px")
+    } else {
+        $("#baseline").css("opacity",.3)
+        $("#baseline").css("width","50px")
+        $("#baseline").css("height","50px")
+    }
+
+    if($("#oneWeek").hasClass("selected") | $("#twoWeeks").hasClass("selected") | $("#oneMonth").hasClass("selected")){
+        $("#timeframe").css("opacity",1)
+        $("#timeframe").css("width","55px")
+        $("#timeframe").css("height","55px")
+        $("#incentive").css("opacity",1)
+        $("#incentive").css("width","55px")
+        $("#incentive").css("height","55px")
+    } else {
+        $("#timeframe").css("opacity",.3)
+        $("#timeframe").css("width","50px")
+        $("#timeframe").css("height","50px")
+        $("#incentive").css("opacity",.3)
+        $("#incentive").css("width","50px")
+        $("#incentive").css("height","50px")
+    }
+
+    if($("#noteArea").val().length>0){
+        $("#notes").css("opacity",1)
+        $("#notes").css("width","55px")
+        $("#notes").css("height","55px")
+    } else {
+        $("#notes").css("opacity",.3)
+        $("#notes").css("width","50px")
+        $("#notes").css("height","50px")
+    }
+
+}
+
+// Event Handlers
+
+// $('window')
+//     .scroll(freezeBanner) --> this didn't work
+
+$('input[type="text"]')
+    // event handler
+    .keyup(resizeInput)
+    .keyup(fillIcons)
+    .keyup(checkError)
+    .keyup(replaceBaseline)
+
+    //resize on page load
+    .each(startSizeInput)
+
+$('textarea')
+    .keyup(fillIcons)
+
+$('#time')
+    .keyup(changeminutes)
+
+$('#baselineTime')
+    .keyup(changeBaselineMinutes)
+
+
+$(".timeframe")
+    .click(toggleButtonColor)
+    .click(changeIncentiveAmount)
+    .click(fillIcons)
+
+</script>
+
+</div>
+
+</body>
+</html>
