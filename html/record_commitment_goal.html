@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bodyweight Goal</title>
+    <title>Commitment</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/record_goal.css" />
 
     <!-- Fonts are hard :( -->
@@ -33,32 +33,23 @@
     <div class ="item item1">
         <br>
 
-        <span class = "sectionTitle"> <img src="images/bodyweight2.svg" id="goal"> </span> <br> <br>
+        <span class = "sectionTitle"> <img src="images/commitment.svg" id="goal"> </span> <br> <br>
 
-        <span id = "goalPreface"> My goal is to be able to do </span>
+        <span id = "goalPreface"> My goal is to </span>
 
         <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "reps" type ="text" placeholder="8" autofocus>
+            <input class ="activityInput" id = "activity" type ="text" placeholder="go to spin class" autofocus="">
         </form>
 
         <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="pull ups">
-        </form> <br><br>
+            <input class ="activityInput" id = "reps" type ="text" placeholder="5">
+        </form>
+
+        <span id = "goalTimes"> times </span> <br><br>
 
         <ul id = "errorsList">
-            <li id = "repsError"> make sure that your reps are a number! </li>
+            <li id = "repsError"> make sure that you enter a number here! </li>
         </ul>
-    </div>
-
-    <div class ="item item2">
-        <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br>
-        <span id = "baselinePreface"> I can currently do </span>
-
-        <form id = "userInput" action="" method ="">
-            <input class ="baselineInput" id = "baselineReps" type ="text" placeholder="6">
-        </form></span>
-        <span id = "baselineExercise"> pull ups </span> <br> <br>
-        <span id = "baselineRepsError"> make sure that your reps are a number! </span>
     </div>
 
     <div class ="item item3">
@@ -82,12 +73,12 @@
 
     <div class ="item item5">
         <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes"> </span> <br> <br> <br>
-
         <form id = "userInput" action="" method ="">
             <textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea>
         </form>
-
     </div>
+
+    <div class ="item item2"></div>
 
     <div class ="item item6"></div>
     <div class ="item item7">
@@ -102,7 +93,7 @@
 var today = new Date()
 var endDate = ""
 var timeFrame = ""
-var bodyweightObjectJSON = ""
+var commitmentObjectJSON = ""
 
 function setEndDate(){
     endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
@@ -110,22 +101,20 @@ function setEndDate(){
     return endDate
 }
 
-var bodyweightObject = {
+var commitmentObject = {
     goalID:"",
-    exercise: "",
-    reps: "",
-    baselineReps:"",
+    activity: "",
+    numTimes: "",
     startDate:"",
     endDate:""
 }
 
-function writeBodyweightObject(){
-    bodyweightObject.exercise = $('#exercise').val()
-    bodyweightObject.reps = $('#reps').val()
-    bodyweightObject.baselineReps = $('#baselineReps').val()
-    bodyweightObject.startDate = new Date()
-    bodyweightObject.endDate = setEndDate()
-    bodyweightObjectJSON = JSON.stringify(bodyweightObject)
+function writeCommitmentObject(){
+    commitmentObject.activity = $('#activity').val()
+    commitmentObject.numTimes = $('#reps').val()
+    commitmentObject.startDate = new Date()
+    commitmentObject.endDate = setEndDate()
+    commitmentObjectJSON = JSON.stringify(commitmentObject)
 }
 
 function changeIncentiveAmount(){
@@ -144,12 +133,8 @@ function changeIncentiveAmount(){
     }
 }
 
-function focusInput(){
-    $("#exercise").focus()
-}
-
 function resizeInput() {
-    if($(this).val().length>=1){
+    if($(this).val().length>0){
         $(this).attr('size', $(this).val().length+2); // buffer can be added if need be (3 = 3 pixels)
     } else {
         $(this).attr('size', $(this).attr('placeholder').length+2);
@@ -168,20 +153,6 @@ function changeTimes(){
     } else {
         $('#goalTimes').html('time')
         $('#baselineTimes').html('time')
-    }
-}
-
-function replaceBaseline(){
-    if($('#exercise').val().length>=1){
-        $('#baselineExercise').html($('#exercise').val())
-    } else {
-        $('#baselineExercise').html('pull ups')
-    }
-
-    if($('#reps').val().length>=1){
-        $('#baselineReps').html($('#reps').val())
-    } else {
-        $('#baselineReps').html('8')
     }
 }
 
@@ -223,17 +194,10 @@ function checkError(){
     } else {
         $("#repsError").css("visibility","hidden");
     }
-
-    if($("#baselineReps").val().length>0 & isNaN($("#baselineReps").val())){
-        $("#baselineRepsError").css("visibility","visible");
-    } else {
-        $("#baselineRepsError").css("visibility","hidden");
-    }
-
 }
 
 function fillIcons() {
-    if($("#exercise").val().length>0 & $("#reps").val().length>0 & $("#reps").val()>0){
+    if($("#activity").val().length>0 & $("#reps").val().length>0 & !isNaN($("#reps").val())){
         $("#goal").css("opacity",1)
         $("#goal").css("width","55px")
         $("#goal").css("height","55px")
@@ -241,16 +205,6 @@ function fillIcons() {
         $("#goal").css("opacity",.3)
         $("#goal").css("width","50px")
         $("#goal").css("height","50px")
-    }
-
-    if($("#baselineReps").val().length>0 & $("#baselineReps").val()>0){
-        $("#baseline").css("opacity",1)
-        $("#baseline").css("width","55px")
-        $("#baseline").css("height","55px")
-    } else {
-        $("#baseline").css("opacity",.3)
-        $("#baseline").css("width","50px")
-        $("#baseline").css("height","50px")
     }
 
     if($("#oneWeek").hasClass("selected") | $("#twoWeeks").hasClass("selected") | $("#oneMonth").hasClass("selected")){
@@ -278,7 +232,6 @@ function fillIcons() {
         $("#notes").css("width","50px")
         $("#notes").css("height","50px")
     }
-
 }
 
 function changeBackground(){
@@ -293,7 +246,7 @@ function sendGoalToDB(){
   $.ajax({
         url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
         type: "POST",
-        data: bodyweightObjectJSON,
+        data: commitmentObjectJSON,
         dataType: 'json', // lowercase is always preferered though jQuery does it, too.
         success: function(){},
         error: function(){}
@@ -302,17 +255,13 @@ function sendGoalToDB(){
 
 // Event Handlers
 
-// $('window')
-//     .scroll(freezeBanner) --> this didn't work
-
 $('input[type="text"]')
     // event handler
     .keyup(resizeInput)
     .keyup(fillIcons)
     .keyup(checkError)
-    .keyup(replaceBaseline)
     .keyup(changeBackground)
-    .keyup(writeBodyweightObject)
+    .keyup(writeCommitmentObject)
 
     //resize on page load
     .each(startSizeInput)
@@ -330,7 +279,7 @@ $(".timeframe")
     .click(toggleButtonColor)
     .click(changeIncentiveAmount)
     .click(fillIcons)
-    .click(writeBodyweightObject)
+    .click(writeCommitmentObject)
 
 </script>
 

@@ -17,7 +17,9 @@
 <div class = "wrapper">
 
     <div class ="item item0 banner" id ="navBarLeft">
-        <a class = "pagelink" href= "file:sweatbank_home.html"> <span id ="home"> sweatbank </span> </a>
+        <div class = "homelink">
+            <a class = "pagelink" href= "file:home2.html"> <span id ="home"> sweatbank </span> </a>
+        </div>
     </div>
 
     <div class ="item item0 banner" id ="navBarMid">
@@ -36,7 +38,7 @@
         <span id = "goalPreface"> My goal is to </span>
 
         <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="squat">
+            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="squat" autofocus>
         </form>
 
         <form id = "userInput" action="" method ="">
@@ -61,7 +63,7 @@
     </div>
 
     <div class ="item item2">
-        <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br> <br>
+        <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br>
         <span id = "baselinePreface"> I can currently </span>
         <span id = "baselineExercise"> squat </span>
         <form id = "userInput" action="" method ="">
@@ -74,7 +76,8 @@
     </div>
 
     <div class ="item item3">
-        <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe"> </span> <br> <br> <br>
+        <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe"> </span> <br> <br>
+        <span id = "timeframePreface"> I want to achieve my goal in </span> <br> <br>
         <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
         <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
         <button class = "timeframe" id="oneMonth"> 1 month </button>
@@ -84,9 +87,11 @@
     <div class ="item item4">
         <span class = "sectionTitle"> <img src="images/incentive.svg" id="incentive"> </span> <br><br>
         <span id = "incentiveDollarSign"> $ </span> <span id = "incentiveAmount"></span> <br> <br>
-        <span id = "incentiveDescription">
-            The money you will put on the line for extra motivation! If you achieve your goal, you will be paid back in full. If you don't achieve your goal, but make progress, you'll get paid back based on how close you got. 90% of the remainder will go to the charity of your choice, and 10% will be used to support our team :D
-        </span>
+        <div class = "description">
+            <span id = "incentiveDescription">
+                This is the money you will put on the line for extra motivation!
+            </span>
+        </div>
     </div>
 
     <div class ="item item5">
@@ -99,47 +104,61 @@
     </div>
 
     <div class ="item item6"></div>
-    <div class ="item item7"></div>
+    <div class ="item item7">
+        <br>
+        <button class = "submit" id="twoWeeks"> confirm goal & select charity </button>
+    </div>
     <div class ="item item8"></div>
     <div class ="item item9"></div>
 
 <script>
 
-// Object is a work in progress!
+var today = new Date()
+var endDate = ""
+var timeFrame = ""
+var liftObjectJSON = ""
 
-// var liftObject = {
-//     lift: $('#exercise').val()
-//     weight: $('#weight').val()
-//     units: $('#units').val()
-//     baselineWeight: $('#baselineWeight').val()
-//     startDate: Date()
-//     endDate: endDate
-// }
+function setEndDate(){
+    endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
+    today = new Date()
+    return endDate
+}
 
-// var timeframe = ""
-// var endDate = ""
+var liftObject = {
+    goalID:"",
+    lift: "",
+    weight:"",
+    reps: "",
+    units:"",
+    baselineWeight:"",
+    startDate:"",
+    endDate:""
+}
 
-// function setTimeframe(){
-
-// }
-
-// function setEndDate(){
-
-// }
-
-console.log($('#exercise').attr('placeholder').length);
-console.log($('#oneWeek').css('background-color'));
-
+function writeLiftObject(){
+    liftObject.lift = $('#exercise').val()
+    liftObject.weight = $('#weight').val()
+    liftObject.reps = $('#reps').val()
+    liftObject.units = $('#units').val()
+    liftObject.baselineWeight = $('#baselineWeight').val()
+    liftObject.startDate = new Date()
+    liftObject.endDate = setEndDate()
+    liftObjectJSON = JSON.stringify(liftObject)
+}
 
 function changeIncentiveAmount(){
     if($("#oneWeek").hasClass("selected")){
         $("#incentiveAmount").html(5)
+        timeFrame = 1
     } else if ($("#twoWeeks").hasClass("selected")){
         $("#incentiveAmount").html(10)
+        timeFrame = 2
     } else if ($("#oneMonth").hasClass("selected")){
         $("#incentiveAmount").html(20)
+        timeFrame = 4
     } else {
         $("#incentiveAmount").html("")
+        timeFrame = 0
     }
 }
 
@@ -193,27 +212,37 @@ function replaceBaseline(){
 function toggleButtonColor(){
     if ($(this).hasClass("selected")){
 
-        $(this).css("background-color","#282933")
-        $(this).css("border-color","#282933")
-        $(this).css("color","white")
+        $(this).css("background-color","#C6C0CA")
+        $(this).css("border-color","#C6C0CA")
+        $(this).css("color","grey")
         $(this).removeClass("selected")
     } else {
-
         $(this).css("background-color","#8A94B9")
         $(this).css("border-color","#8A94B9")
         $(this).css("color","black")
         $(this).addClass("selected")
 
-        // it worked!
-        $(".timeframe").not(this).css("background-color","#282933")
-        $(".timeframe").not(this).css("border-color","#282933")
-        $(".timeframe").not(this).css("color","white")
+        $(".timeframe").not(this).css("background-color","#C6C0CA")
+        $(".timeframe").not(this).css("border-color","#C6C0CA")
+        $(".timeframe").not(this).css("color","grey")
         $(".timeframe").not(this).removeClass("selected")
 
+        // mouseover function
+        $(".timeframe").mouseover(function(){
+        $(this).css("color","black")
+        });
+
+        $(".timeframe").mouseout(function(){
+            if (!$(this).hasClass("selected")){
+                $(this).css("color","grey")
+            }
+        });
     }
 }
 
 function checkError(){
+
+    // add a baseline > goal error!
 
     if($("#weight").val().length>0 & isNaN($("#weight").val())){
         $("#weightError").css("visibility","visible");
@@ -244,6 +273,8 @@ function checkError(){
 }
 
 function fillIcons() {
+
+    // goal icon
     if($("#exercise").val().length>0 & $("#weight").val().length>0 & $("#weight").val()>0 & $("#reps").val().length>0 & $("#reps").val()>0 & ($("#units").val() == "kg" | $("#units").val() == "lbs")){
         $("#goal").css("opacity",1)
         $("#goal").css("width","55px")
@@ -254,6 +285,7 @@ function fillIcons() {
         $("#goal").css("height","50px")
     }
 
+    // baseline icon
     if($("#baselineWeight").val().length>0 & $("#baselineWeight").val()>0){
         $("#baseline").css("opacity",1)
         $("#baseline").css("width","55px")
@@ -264,6 +296,7 @@ function fillIcons() {
         $("#baseline").css("height","50px")
     }
 
+    // timeframe icon (change to $('#timeframe').any)
     if($("#oneWeek").hasClass("selected") | $("#twoWeeks").hasClass("selected") | $("#oneMonth").hasClass("selected")){
         $("#timeframe").css("opacity",1)
         $("#timeframe").css("width","55px")
@@ -289,7 +322,25 @@ function fillIcons() {
         $("#notes").css("width","50px")
         $("#notes").css("height","50px")
     }
+}
 
+function changeBackground(){
+    if($(this).val().length>0){
+        $(this).css('background-color','#8A94B9')
+    } else {
+        $(this).css('background-color','#C6C0CA')
+    }
+}
+
+function sendGoalToDB(){
+  $.ajax({
+        url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
+        type: "POST",
+        data: liftObjectJSON,
+        dataType: 'json', // lowercase is always preferered though jQuery does it, too.
+        success: function(){},
+        error: function(){}
+    });
 }
 
 // Event Handlers
@@ -303,9 +354,14 @@ $('input[type="text"]')
     .keyup(fillIcons)
     .keyup(checkError)
     .keyup(replaceBaseline)
+    .keyup(changeBackground)
+    .keyup(writeLiftObject)
 
     //resize on page load
     .each(startSizeInput)
+
+$('.submit')
+    .click(sendGoalToDB)
 
 $('textarea')
     .keyup(fillIcons)
@@ -317,6 +373,7 @@ $(".timeframe")
     .click(toggleButtonColor)
     .click(changeIncentiveAmount)
     .click(fillIcons)
+    .click(writeLiftObject)
 
 </script>
 

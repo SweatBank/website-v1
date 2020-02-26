@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Select Goal</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/select_goal.css" />
+
+    <!-- Fonts are hard :( -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+
+    <!-- NAVIGATION BAR -->
+
+    <div class ="item item0 banner" id ="navBarLeft">
+        <a class = "pagelink" href= "file:home2.html"> <span id ="home"> sweatbank </span> </a>
+    </div>
+
+    <div class ="item item0 banner" id ="navBarMid">
+
+    </div>
+
+    <div class ="item item0 banner" id ="navBarRight">
+        <a class = "pagelink" href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a>
+    </div>
+
+    <div class ="item item1"></div>
+
+    <div class ="item item2">
+        <div class ="title">
+        Goal Type <br>
+        <span id = "instructions"> select the type of goal you want to set by clicking one of the icons below </span>
+        </div>
+    </div>
+
+    <div class ="item item3"></div>
+    <div class ="item item4"></div>
+
+    <!-- COMMITMENT GOAL -->
+
+    <div class ="item item17 goalIcon">
+        <button class = "goaltype" id="commitment">
+            <img src="images/commitment.svg" id="commitmentIcon">
+        </button>
+    </div>
+
+    <div class ="item item18">
+        <div class = "description">
+            <span class =  "examples" id = "commitmentDescription">
+            <span class = "typename"> commitment:  </span>
+            going to yoga class, taking a morning stroll, meditating, etc <br>
+            information: healthy activity, number of times <br>
+            example: to bike to work 3 times
+            </span>
+        </div>
+    </div>
+
+    <!-- empty divs -->
+    <div class ="item item7"></div>
+    <div class ="item item8"></div>
+
+    <!-- TEMPO GOAL -->
+
+    <div class ="item item13 goalIcon">
+        <button class = "goaltype" id="tempo">
+            <img src="images/tempo.svg" id="tempoIcon">
+        </button>
+    </div>
+
+    <div class ="item item14">
+        <div class = "description">
+            <span class = "typename"> paced: </span>
+            <span class =  "examples" id = "tempoDescription">
+            running, walking, biking, swimming, etc <br>
+            information: how you will move, distance, time <br>
+            example: to be able to run 2 miles in 15 minutes
+            </span>
+        </div>
+    </div>
+
+
+    <!-- empty divs -->
+    <div class ="item item11"></div>
+    <div class ="item item12"></div>
+
+    <!-- BODYWEIGHT EXERCISE GOAL -->
+
+    <div class ="item item9 goalIcon">
+        <button class = "goaltype" id="bodyweight">
+            <img src="images/bodyweight2.svg" id="bodyweightIcon">
+        </button>
+    </div>
+
+    <div class ="item item10">
+        <div class = "description">
+            <span class = "typename"> bodyweight exercise:  </span>
+            <span class =  "examples" id = "bodyweightDescription">
+            push ups, pull ups, burpees, etc <br>
+            information: exercise, number of reps <br>
+            example: to be able to do 5 pull ups
+            </span>
+        </div>
+    </div>
+
+        <!-- empty divs -->
+    <div class ="item item15"></div>
+    <div class ="item item16"></div>
+
+    <!-- WEIGHTLIFTING GOAL -->
+
+    <div class ="item item5 goalIcon">
+        <button class = "goaltype" id="weightlifting">
+            <img src="images/dumbbell.svg" id="weightliftingIcon">
+        </button>
+    </div>
+
+    <div class ="item item6">
+        <div class = "description">
+            <span class = "typename"> weightlifting: </span>
+            <span class =  "examples" id = "weightliftingDescription">
+            squats, curls, lunges, bench, single-leg russian twists, etc <br>
+            information: exercise, weight, number of reps <br>
+            example: to be able to squat 200 lbs for 6 reps
+            </span>
+        </div>
+    </div>
+
+        <!-- empty divs -->
+    <div class ="item item19"></div>
+    <div class ="item item20"></div>
+    <div class ="item item21"></div>
+    <div class ="item item22"></div>
+    <div class ="item item23"></div>
+
+    <div class ="item item24">
+        <a id = "goToGoal" href= ""> set goal & timeframe </a>
+    </div>
+
+    <div class ="item item25"></div>
+    <div class ="item item26"></div>
+    <div class ="item item27"></div>
+    <div class ="item item28"></div>
+    <div class ="item item29"></div>
+    <div class ="item item30"></div>
+    <div class ="item item31"></div>
+
+    <div class ="item item25"></div>
+    <div class ="item item26"></div>
+    <div class ="item item27"></div>
+    <div class ="item item28"></div>
+    <div class ="item item29"></div>
+    <div class ="item item30"></div>
+
+<script>
+
+
+// mouseover function
+$(".goaltype").mouseover(function(){
+    if (!$(this).hasClass("selected")){
+        $(this).find("img").css("opacity",.7)
+    }
+});
+
+// mouseout function
+$(".goaltype").mouseout(function(){
+    if (!$(this).hasClass("selected")){
+        $(this).find("img").css("opacity",.3)
+    }
+});
+
+// make associated text black
+
+function toggleIconFill(){
+    if ($(this).hasClass("selected")){
+
+        $(this).find("img").css("opacity",.3)
+        $(this).find("img").css("height","50px")
+        $(this).find("img").css("width","50px")
+        $(this).removeClass("selected")
+    } else {
+        $(this).find("img").css("opacity",1)
+        $(this).find("img").css("height","55px")
+        $(this).find("img").css("width","55px")
+        $(this).addClass("selected")
+
+        $(".goaltype").not(this).find("img").css("opacity",.3)
+        $(".goaltype").not(this).find("img").css("height","50px")
+        $(".goaltype").not(this).find("img").css("width","50px")
+        $(".goaltype").not(this).removeClass("selected")
+    }
+}
+
+
+function textFill(){
+    if ($("#weightlifting").hasClass("selected")){
+        $("#weightliftingDescription").css("color","#5F527F")
+        $(".description").find(".examples").not("#weightliftingDescription").css("color","grey")
+        $("#goToGoal").attr("href", "record_lift_goal.html")
+
+    } else if ($("#bodyweight").hasClass("selected")) {
+        $("#bodyweightDescription").css("color","#5F527F")
+        $(".description").find(".examples").not("#bodyweightDescription").css("color","grey")
+        $("#goToGoal").attr("href", "record_bodyweight_goal.html")
+
+    } else if ($("#tempo").hasClass("selected")) {
+        $("#tempoDescription").css("color","#5F527F")
+        $(".description").find(".examples").not("#tempoDescription").css("color","grey")
+        $("#goToGoal").attr("href", "record_tempo_goal.html")
+
+    } else if ($("#commitment").hasClass("selected")) {
+        $("#commitmentDescription").css("color","#5F527F")
+        $(".description").find(".examples").not("#commitmentDescription").css("color","grey")
+        $("#goToGoal").attr("href", "record_commitment_goal.html")
+
+    } else {
+        $(".description").find(".examples").css("color","grey")
+        $("#goToGoal").attr("href","")
+    }
+}
+
+// Event Handlers
+
+// little bit buggy, fix so that
+$(".goaltype")
+    .click(toggleIconFill)
+    .click(textFill)
+
+</script>
+
+</div>
+
+</body>
+</html>
