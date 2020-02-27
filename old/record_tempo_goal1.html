@@ -2,13 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Bodyweight Goal</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal.css" />
-
-    <!-- Fonts are hard :( -->
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <title>Tempo Goal</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal1.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
@@ -18,47 +13,60 @@
 
     <div class ="item item0 banner" id ="navBarLeft">
         <div class = "homelink">
-            <a class = "pagelink" href= "file:home2.html"> <span id ="home"> sweatbank </span> </a>
+            <a  href= "file:home2.html"> <span id ="home"> sweatbank </span> </a>
         </div>
     </div>
 
-    <div class ="item item0 banner" id ="navBarMid">
-
-    </div>
-
-    <div class ="item item0 banner" id ="navBarRight">
-        <a class = "pagelink" href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a>
-    </div>
+    <div class ="item item0 banner" id ="navBarMid"></div>
+    <div class ="item item0 banner" id ="navBarRight"><a  href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
 
     <div class ="item item1">
         <br>
 
-        <span class = "sectionTitle"> <img src="images/bodyweight2.svg" id="goal"> </span> <br> <br>
+        <span class = "sectionTitle"> <img src="images/tempo.svg" id="goal"> </span> <br> <br>
 
-        <span id = "goalPreface"> My goal is to be able to do </span>
+        <span class = "preface"> My goal is to </span>
 
-        <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "reps" type ="text" placeholder="8" autofocus>
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="run" autofocus>
         </form>
 
-        <form id = "userInput" action="" method ="">
-            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="pull ups">
-        </form> <br><br>
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "distance" type ="text" placeholder="4">
+        </form>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "units" type ="text" placeholder="mi/km">
+        </form>
+
+        <span id = "goalIn"> in </span>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "time" type ="text" placeholder="30">
+        </form>
+
+        <span id = "goalMin"> minutes </span> <br><br>
 
         <ul id = "errorsList">
-            <li id = "repsError"> make sure that your reps are a number! </li>
+            <li id = "distanceError"> make sure that the distance is a number! </li>
+            <li id = "unitsError"> distance should either be "mi" or "km" </li>
+            <li id = "timeError"> make sure that your time is a number! </li>
         </ul>
     </div>
 
     <div class ="item item2">
         <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br>
-        <span id = "baselinePreface"> I can currently do </span>
+        <span class = "preface"> I can currently </span>
+        <span id = "baselineExercise"> run </span>
+        <span id = "baselineDistance"> 4 </span>
+        <span id = "baselineUnits"> mi/km </span>
+        <span class = "preface"> in </span>
 
-        <form id = "userInput" action="" method ="">
-            <input class ="baselineInput" id = "baselineReps" type ="text" placeholder="6">
-        </form></span>
-        <span id = "baselineExercise"> pull ups </span> <br> <br>
-        <span id = "baselineRepsError"> make sure that your reps are a number! </span>
+        <form class = "userInput">
+            <input class ="baselineInput" id = "baselineTime" type ="text" placeholder="40">
+        </form>
+        <span id = "baselineMin"> minutes </span> <br><br>
+        <span id = "baselineTimeError"> make sure that your time is a number! </span>
     </div>
 
     <div class ="item item3">
@@ -83,7 +91,7 @@
     <div class ="item item5">
         <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes"> </span> <br> <br> <br>
 
-        <form id = "userInput" action="" method ="">
+        <form class = "userInput">
             <textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea>
         </form>
 
@@ -102,7 +110,7 @@
 var today = new Date()
 var endDate = ""
 var timeFrame = ""
-var bodyweightObjectJSON = ""
+var tempoObjectJSON = ""
 
 function setEndDate(){
     endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
@@ -110,22 +118,27 @@ function setEndDate(){
     return endDate
 }
 
-var bodyweightObject = {
+var tempoObject = {
     goalID:"",
     exercise: "",
-    reps: "",
-    baselineReps:"",
+    distance:"",
+    units: "",
+    time: "",
+    baselineTime:"",
     startDate:"",
     endDate:""
 }
 
-function writeBodyweightObject(){
-    bodyweightObject.exercise = $('#exercise').val()
-    bodyweightObject.reps = $('#reps').val()
-    bodyweightObject.baselineReps = $('#baselineReps').val()
-    bodyweightObject.startDate = new Date()
-    bodyweightObject.endDate = setEndDate()
-    bodyweightObjectJSON = JSON.stringify(bodyweightObject)
+function writeTempoObject(){
+    tempoObject.goalID = ""
+    tempoObject.exercise = $('#exercise').val()
+    tempoObject.distance = $('#distance').val()
+    tempoObject.units = $('#units').val()
+    tempoObject.time = $('#time').val()
+    tempoObject.baselineTime = $('#baselineTime').val()
+    tempoObject.startDate = new Date()
+    tempoObject.endDate = setEndDate()
+    tempoObjectJSON = JSON.stringify(tempoObject)
 }
 
 function changeIncentiveAmount(){
@@ -160,28 +173,45 @@ function startSizeInput() {
     $(this).attr('size', $(this).attr('placeholder').length+2);
 }
 
-function changeTimes(){
-    if ($('#reps').val()!=1){
-        $('#goalTimes').html('times')
-        $('#baselineTimes').html('times')
-
+function changeminutes(){
+    if ($('#time').val()!=1){
+        $('#goalMin').html('minutes')
     } else {
-        $('#goalTimes').html('time')
-        $('#baselineTimes').html('time')
+        $('#goalMin').html('minute')
+    }
+}
+
+function changeBaselineMinutes(){
+    if ($('#baselineTime').val()!=1){
+        $('#baselineMin').html('minutes')
+    } else {
+        $('#baselineMin').html('minute')
     }
 }
 
 function replaceBaseline(){
-    if($('#exercise').val().length>=1){
+    if($('#exercise').val().length>0){
         $('#baselineExercise').html($('#exercise').val())
     } else {
-        $('#baselineExercise').html('pull ups')
+        $('#baselineExercise').html('run')
     }
 
-    if($('#reps').val().length>=1){
-        $('#baselineReps').html($('#reps').val())
+    if($('#distance').val().length>0){
+        $('#baselineDistance').html($('#distance').val())
     } else {
-        $('#baselineReps').html('8')
+        $('#baselineDistance').html(4)
+    }
+
+    if($('#units').val().length>0){
+        $('#baselineUnits').html($('#units').val())
+    } else {
+        $('#baselineUnits').html('mi/km')
+    }
+
+    if($('#time').val().length>0){
+        $('#baselineTime').html($('#time').val())
+    } else {
+        $('#baselineTime').html('30')
     }
 }
 
@@ -218,22 +248,36 @@ function toggleButtonColor(){
 
 function checkError(){
 
-    if($("#reps").val().length>0 & isNaN($("#reps").val())){
-        $("#repsError").css("visibility","visible");
+    if($("#distance").val().length>0 & isNaN($("#distance").val())){
+        $("#distanceError").css("visibility","visible");
     } else {
-        $("#repsError").css("visibility","hidden");
+        // $("#errorsList li").eq(1).remove(); --> attempt to dynamically remove list items so that list always appear from same position under text
+        $("#distanceError").css("visibility","hidden");
     }
 
-    if($("#baselineReps").val().length>0 & isNaN($("#baselineReps").val())){
-        $("#baselineRepsError").css("visibility","visible");
+    if($("#units").val().length>0 & $("#units").val() != "km" & $("#units").val() != "mi"){
+        $("#unitsError").css("visibility","visible");
+    }
+    else {
+        $("#unitsError").css("visibility","hidden");
+    }
+
+    if($("#time").val().length>0 & isNaN($("#time").val())){
+        $("#timeError").css("visibility","visible");
     } else {
-        $("#baselineRepsError").css("visibility","hidden");
+        $("#timeError").css("visibility","hidden");
+    }
+
+    if($("#baselineTime").val().length>0 & isNaN($("#baselineTime").val())){
+        $("#baselineTimeError").css("visibility","visible");
+    } else {
+        $("#baselineTimeError").css("visibility","hidden");
     }
 
 }
 
 function fillIcons() {
-    if($("#exercise").val().length>0 & $("#reps").val().length>0 & $("#reps").val()>0){
+    if($("#exercise").val().length>0 & $("#distance").val().length>0 & $("#distance").val()>0 & $("#time").val().length>0 & $("#time").val()>0 & ($("#units").val() == "km" | $("#units").val() == "mi")){
         $("#goal").css("opacity",1)
         $("#goal").css("width","55px")
         $("#goal").css("height","55px")
@@ -243,7 +287,7 @@ function fillIcons() {
         $("#goal").css("height","50px")
     }
 
-    if($("#baselineReps").val().length>0 & $("#baselineReps").val()>0){
+    if($("#baselineTime").val().length>0 & $("#baselineTime").val()>0){
         $("#baseline").css("opacity",1)
         $("#baseline").css("width","55px")
         $("#baseline").css("height","55px")
@@ -293,7 +337,7 @@ function sendGoalToDB(){
   $.ajax({
         url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
         type: "POST",
-        data: bodyweightObjectJSON,
+        data: tempoObjectJSON,
         dataType: 'json', // lowercase is always preferered though jQuery does it, too.
         success: function(){},
         error: function(){}
@@ -312,7 +356,8 @@ $('input[type="text"]')
     .keyup(checkError)
     .keyup(replaceBaseline)
     .keyup(changeBackground)
-    .keyup(writeBodyweightObject)
+    .keyup(setEndDate)
+    .keyup(writeTempoObject)
 
     //resize on page load
     .each(startSizeInput)
@@ -323,14 +368,19 @@ $('.submit')
 $('textarea')
     .keyup(fillIcons)
 
-$('#reps')
-    .keyup(changeTimes)
+$('#time')
+    .keyup(changeminutes)
+
+$('#baselineTime')
+    .keyup(changeBaselineMinutes)
+
 
 $(".timeframe")
     .click(toggleButtonColor)
     .click(changeIncentiveAmount)
     .click(fillIcons)
-    .click(writeBodyweightObject)
+    .click(setEndDate)
+    .click(writeTempoObject)
 
 </script>
 

@@ -4,8 +4,12 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(6,1fr);
-    grid-template-rows: 60px 200px 220px minmax(220px,auto) 100px; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
+    grid-template-rows: 60px 150px repeat(6,auto) 110px; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
     /*grid-gap: 2px;*/
+}
+
+.item6, .item10, .item14, .item18{
+    grid-column: span 3;
 }
 
 .sticky {
@@ -13,7 +17,13 @@
   top: 0;
 }
 
-#goal, #baseline, #timeframe, #incentive, #notes{ opacity: .3; }
+.title{
+    padding-left: 130px;
+    padding-top: 10px;
+    text-align:left;
+}
+
+#weightliftingIcon, #bodyweightIcon, #tempoIcon, #commitmentIcon{ opacity: .3; }
 
 #distanceError, #weightError, #unitsError, #repsError, #timeError, #baselineWeightError, #baselineTimeError, #baselineRepsError{
     visibility: hidden;
@@ -37,6 +47,8 @@ body{
 img{ width: 50px; height: 50px; }
 
 a{ text-decoration: none; }
+
+#goToGoal{ color:white; }
 
 #profileIcon{ opacity: .6; width: 40px; height: 40px; }
 #profileIcon:hover{ opacity: .9; }
@@ -79,6 +91,7 @@ a{ text-decoration: none; }
     top: 0;
 }
 
+
 .item{
     background: white;
     /*background: #8A94B9;*/
@@ -88,13 +101,14 @@ a{ text-decoration: none; }
     font-family: Tw Cen Mt;
 }
 
-.item1{
-    grid-column: span 6;
+.item2{
+    grid-column: span 4;
+    font-family: Courier;
+    /*font-weight: 600;*/
+    font-size: 45px;
 }
 
-.item2, .item3, .item4, .item5, .item6, .item7, .item8, .item9{
-    grid-column: span 3;
-}
+.goalIcon{text-align:right;}
 
 
 /* RESPONSIVE DESIGN HERE */
@@ -181,17 +195,19 @@ and (-webkit-device-pixel-ratio : 3) {
 .description{
     /*text-align: left;*/
     padding-right: 30px;
-    padding-left: 30px;
+    padding-left: 10px;
+    text-align: left;
     font-size: calc(7px + .6vw + .2vh);
+    color: grey;
 }
+
+.typename {color:black;}
 
 .sectionTitle{
     font-size: 3vh;
     font-family: Calibri;
     font-weight: 800;
 }
-
-.timeframe:hover{color:black;}
 
 .timeframe{
     /*font-family: Tw Cen Mt;*/
@@ -202,24 +218,51 @@ and (-webkit-device-pixel-ratio : 3) {
     color: grey; background: #C6C0CA;
 }
 
-.item7{
-    padding-left: 150px;
+.goaltype:focus{
+    outline: none;
 }
 
-.submit:hover{
+.goaltype:hover{
+    cursor: pointer;
+}
+
+.goaltype{
+    font-family: Tw Cen Mt;
+    background: none;
+    border: none;
+    /*font-family: Courier;*/
+    padding: none;
+    font-size: 14px;
+    color: white;
+}
+
+#goToGoal:hover{
     background: #8A94B9;
     border-color: #8A94B9;
     color: black;
     cursor: pointer;
 }
 
-.submit{
+#goToGoal{
     font-family: Tw Cen Mt;
     /*font-family: Courier;*/
     padding: 7px 13px;
     border-radius: 9px; border-width: 1px; border-color: #615B5B;
     font-size: 14px;
     color: white; background: #474444;
+}
+
+/*br {
+   display: block;
+   margin: 0px;
+}*/
+
+
+
+#instructions{
+    line-height:22px;
+    font-family: Tw Cen Mt;
+    font-size: 18px;
 }
 
 .timeframe:focus{ outline: none; }

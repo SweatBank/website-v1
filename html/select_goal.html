@@ -62,12 +62,10 @@
         </div>
     </div>
 
-    <!-- empty divs -->
     <div class ="item item7"></div>
     <div class ="item item8"></div>
 
     <!-- TEMPO GOAL -->
-
     <div class ="item item13 goalIcon">
         <button class = "goaltype" id="tempo">
             <img src="images/tempo.svg" id="tempoIcon">
@@ -85,13 +83,10 @@
         </div>
     </div>
 
-
-    <!-- empty divs -->
     <div class ="item item11"></div>
     <div class ="item item12"></div>
 
     <!-- BODYWEIGHT EXERCISE GOAL -->
-
     <div class ="item item9 goalIcon">
         <button class = "goaltype" id="bodyweight">
             <img src="images/bodyweight2.svg" id="bodyweightIcon">
@@ -109,12 +104,10 @@
         </div>
     </div>
 
-        <!-- empty divs -->
     <div class ="item item15"></div>
     <div class ="item item16"></div>
 
     <!-- WEIGHTLIFTING GOAL -->
-
     <div class ="item item5 goalIcon">
         <button class = "goaltype" id="weightlifting">
             <img src="images/dumbbell.svg" id="weightliftingIcon">
@@ -202,22 +195,22 @@ function textFill(){
     if ($("#weightlifting").hasClass("selected")){
         $("#weightliftingDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#weightliftingDescription").css("color","grey")
-        $("#goToGoal").attr("href", "record_lift_goal.html")
+        $("#goToGoal").attr("href", "record_lift_goal2.html")
 
     } else if ($("#bodyweight").hasClass("selected")) {
         $("#bodyweightDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#bodyweightDescription").css("color","grey")
-        $("#goToGoal").attr("href", "record_bodyweight_goal.html")
+        $("#goToGoal").attr("href", "record_bodyweight_goal2.html")
 
     } else if ($("#tempo").hasClass("selected")) {
         $("#tempoDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#tempoDescription").css("color","grey")
-        $("#goToGoal").attr("href", "record_tempo_goal.html")
+        $("#goToGoal").attr("href", "record_tempo_goal2.html")
 
     } else if ($("#commitment").hasClass("selected")) {
         $("#commitmentDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#commitmentDescription").css("color","grey")
-        $("#goToGoal").attr("href", "record_commitment_goal.html")
+        $("#goToGoal").attr("href", "record_commitment_goal2.html")
 
     } else {
         $(".description").find(".examples").css("color","grey")

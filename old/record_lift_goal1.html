@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Weightlifting Goal</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal1.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+    <div class ="item item0 banner" id ="navBarLeft">
+        <div class = "homelink">
+            <a  href= "file:home2.html"> <span id ="home"> sweatbank </span> </a>
+        </div>
+    </div>
+
+    <div class ="item item0 banner" id ="navBarMid"></div>
+    <div class ="item item0 banner" id ="navBarRight"><a  href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
+
+    <div class ="item item1">
+        <br>
+
+        <span class = "sectionTitle"> <img src="images/dumbbell.svg" id="goal"> </span> <br> <br>
+
+        <span class = "preface"> My goal is to </span>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "exercise" type ="text" placeholder="squat" autofocus>
+        </form>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "weight" type ="text" placeholder="100">
+        </form>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "units" type ="text" placeholder="lbs/kg">
+        </form>
+
+        <form class = "userInput">
+            <input class ="exerciseInput" id = "reps" type ="text" placeholder="8">
+        </form>
+
+        <span id = "goalTimes"> times </span> <br><br>
+
+        <ul id = "errorsList">
+            <li id = "weightError"> make sure that the weight is a number! </li>
+            <li id = "unitsError"> units should either be "lbs" or "kg" </li>
+            <li id = "repsError"> make sure that the reps are a number! </li>
+        </ul>
+    </div>
+
+    <div class ="item item2">
+        <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline"> </span> <br> <br>
+        <span class = "preface"> I can currently </span>
+        <span id = "baselineExercise"> squat </span>
+        <form class = "userInput">
+            <input class ="baselineInput" id = "baselineWeight" type ="text" placeholder="75">
+        </form>
+        <span id = "baselineUnits"> lbs/kg </span>
+        <span id = "baselineLiftReps"> 8 </span>
+        <span id = "baselineTimes"> times </span> <br><br>
+        <span id = "baselineWeightError"> make sure that the weight is a number! </span><br>
+        <span id = "baselineExceedsGoalError"> your baseline has to be less than your goal! </span>
+    </div>
+
+    <div class ="item item3">
+        <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe"> </span> <br> <br>
+        <span id = "timeframePreface"> I want to achieve my goal in </span> <br> <br>
+        <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
+        <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
+        <button class = "timeframe" id="threeWeeks"> 3 weeks </button> &nbsp
+        <button class = "timeframe" id="fourWeeks"> 4 weeks </button>
+
+    </div>
+
+    <div class ="item item4">
+        <span class = "sectionTitle"> <img src="images/incentive.svg" id="incentive"> </span> <br><br>
+        <span id = "incentiveDollarSign"> $ </span> <span id = "incentiveAmount"></span> <br> <br>
+        <div class = "description">
+            <span id = "incentiveDescription">
+                This is the money you will put on the line for extra motivation!
+            </span>
+        </div>
+    </div>
+
+    <div class ="item item5">
+        <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes"> </span> <br> <br> <br>
+
+        <form class = "userInput">
+            <textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea>
+        </form>
+
+    </div>
+
+    <div class ="item item6"></div>
+    <div class ="item item7">
+        <br>
+        <button class = "submit disallowed"> confirm goal & select charity </button>
+    </div>
+    <div class ="item item8"></div>
+    <div class ="item item9"></div>
+
+<script>
+
+function changeIncentiveAmount(){
+    if($("#oneWeek").hasClass("selected")){
+        $("#incentiveAmount").html(5)
+        timeFrame = 1
+    } else if ($("#twoWeeks").hasClass("selected")){
+        $("#incentiveAmount").html(10)
+        timeFrame = 2
+    } else if ($("#threeWeeks").hasClass("selected")){
+        $("#incentiveAmount").html(15)
+        timeFrame = 3
+    } else if ($("#fourWeeks").hasClass("selected")){
+        $("#incentiveAmount").html(20)
+        timeFrame = 4
+    } else {
+        $("#incentiveAmount").html("")
+        timeFrame = 0
+    }
+}
+
+function resizeInput() {
+    if( $(this).val().length>=1 ) { $(this).attr('size', $(this).val().length+2) }
+    else { $(this).attr('size', $(this).attr('placeholder').length+2) }
+}
+
+function startSizeInput() { $(this).attr('size', $(this).attr('placeholder').length+2) }
+
+function changeTimes(){ // changes the placeholder word from "times" to "time" if the number of reps is 1
+    if ($('#reps').val()!=1){
+        $('#goalTimes').html('times')
+        $('#baselineTimes').html('times')
+    } else {
+        $('#goalTimes').html('time')
+        $('#baselineTimes').html('time')
+    }
+}
+
+function replaceBaseline(){ // replaces baseline placeholder text based on goal text
+    if($('#exercise').val().length>=1){ $('#baselineExercise').html($('#exercise').val()) }
+    else { $('#baselineExercise').html('squat') }
+
+    if($('#units').val().length>=1){$('#baselineUnits').html($('#units').val())}
+    else {$('#baselineUnits').html('lbs/kg')}
+
+    if($('#reps').val().length>=1){$('#baselineLiftReps').html($('#reps').val())}
+    else {$('#baselineLiftReps').html('8')}
+}
+
+function toggleButtonColor(){
+    if ($(this).hasClass("selected")){
+
+        $(this).css("background-color","#C6C0CA"), $(this).css("border-color","#C6C0CA"), $(this).css("color","grey")
+        $(this).removeClass("selected")
+    } else {
+        $(this).css("background-color","#8A94B9"), $(this).css("border-color","#8A94B9"), $(this).css("color","black")
+        $(this).addClass("selected")
+
+        $(".timeframe").not(this).css("background-color","#C6C0CA"), $(".timeframe").not(this).css("border-color","#C6C0CA"), $(".timeframe").not(this).css("color","grey")
+        $(".timeframe").not(this).removeClass("selected")
+
+        // mouseover function
+        $(".timeframe").mouseover(function(){
+        $(this).css("color","black")
+        });
+
+        $(".timeframe").mouseout(function(){
+            if (!$(this).hasClass("selected")){
+                $(this).css("color","grey")
+            }
+        });
+    }
+}
+
+function checkError(){
+
+    // baseline > goal error
+    if ($("#weight").val().length > 0 & $("#baselineWeight").val() >= $("#weight").val()) { $("#baselineExceedsGoalError").css("visibility","visible") }
+    else { $("#baselineExceedsGoalError").css("visibility","hidden") }
+
+    // non-numerical weight error
+    if ($("#weight").val().length>0 & isNaN($("#weight").val())) { $("#weightError").css("visibility","visible") }
+    else { $("#weightError").css("visibility","hidden") }
+
+    // non-standard units error
+    if ($("#units").val().length>0 & $("#units").val() != "kg" & $("#units").val() != "lbs"){ $("#unitsError").css("visibility","visible") }
+    else { $("#unitsError").css("visibility","hidden") }
+
+    // non-numerical reps error
+    if($("#reps").val().length>0 & isNaN($("#reps").val())){
+        $("#repsError").css("visibility","visible");
+    } else {
+        $("#repsError").css("visibility","hidden");
+    }
+
+    // non-numerical baseline weight error
+    if($("#baselineWeight").val().length>0 & isNaN($("#baselineWeight").val())){
+        $("#baselineWeightError").css("visibility","visible");
+    } else {
+        $("#baselineWeightError").css("visibility","hidden");
+    }
+}
+
+function fillIcons() {
+
+    // goal icon
+    if($("#exercise").val().length>0 & $("#weight").val().length>0 & $("#weight").val()>0 & $("#reps").val().length>0 & $("#reps").val()>0 & ($("#units").val() == "kg" | $("#units").val() == "lbs")){
+        $("#goal").css("opacity",1), $("#goal").css("width","55px"), $("#goal").css("height","55px")
+    } else {
+        $("#goal").css("opacity",.3), $("#goal").css("width","50px"),$("#goal").css("height","50px")
+    }
+
+    // baseline icon
+    if($("#baselineWeight").val().length>0 & $("#baselineWeight").val()>0 & ( $("#baselineWeight").val()<$("#weight").val() | $("#weight").val().length == 0 )){
+        $("#baseline").css("opacity",1), $("#baseline").css("width","55px"), $("#baseline").css("height","55px")
+    } else {
+        $("#baseline").css("opacity",.3), $("#baseline").css("width","50px"), $("#baseline").css("height","50px")
+    }
+
+    // timeframe & incentive icons
+    if($(".timeframe").hasClass("selected")){
+        $("#timeframe").css("opacity",1), $("#timeframe").css("width","55px"), $("#timeframe").css("height","55px")
+        $("#incentive").css("opacity",1), $("#incentive").css("width","55px"), $("#incentive").css("height","55px")
+    } else {
+        $("#timeframe").css("opacity",.3), $("#timeframe").css("width","50px"), $("#timeframe").css("height","50px")
+        $("#incentive").css("opacity",.3), $("#incentive").css("width","50px"), $("#incentive").css("height","50px")
+    }
+
+    // notes icon
+    if ( $("#noteArea").val().length>0 ) { $("#notes").css("opacity",1), $("#notes").css("width","55px"), $("#notes").css("height","55px") }
+    else { $("#notes").css("opacity",.3), $("#notes").css("width","50px"), $("#notes").css("height","50px") }
+}
+
+function changeBackground(){
+    if($(this).val().length>0){ $(this).css('background-color','#8A94B9') }
+    else { $(this).css('background-color','#C6C0CA') }
+}
+
+function allowSubmit(){
+    if($("#goal").css("opacity") == 1 & $("#timeframe").css("opacity") == 1 & $("#baseline").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
+    else { $(".submit").addClass("disallowed") }
+}
+
+var today = new Date()
+var endDate = ""
+var timeFrame = ""
+var liftObjectJSON = ""
+
+function setEndDate(){
+    endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
+    today = new Date()
+    return endDate
+}
+
+var liftObject = {
+    goalID:"",
+    confirmed:"", // once a payment has been received for a goal, it will be confirmed
+    type: "weightlifting",
+    lift: "",
+    weight:"",
+    reps: "",
+    units:"",
+    baselineWeight:"",
+    startDate:"",
+    endDate:""
+}
+
+function writeLiftObject(){
+    liftObject.lift = $('#exercise').val()
+    liftObject.weight = $('#weight').val()
+    liftObject.reps = $('#reps').val()
+    liftObject.units = $('#units').val()
+    liftObject.baselineWeight = $('#baselineWeight').val()
+    liftObject.startDate = new Date()
+    liftObject.endDate = setEndDate()
+    liftObjectJSON = JSON.stringify(liftObject)
+}
+
+function sendGoalToDB(){
+  $.ajax({
+        url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
+        type: "POST",
+        data: liftObjectJSON,
+        dataType: 'json', // lowercase is always preferered though jQuery does it, too.
+        success: function(){},
+        error: function(){}
+    });
+}
+
+// Event Handlers
+
+$('input[type="text"]')
+    .keyup(resizeInput)
+    .keyup(fillIcons)
+    .keyup(checkError)
+    .keyup(replaceBaseline)
+    .keyup(changeBackground)
+    .keyup(writeLiftObject)
+    .keyup(allowSubmit)
+    .each(startSizeInput) //resize on page load
+
+$('.submit')
+    .click(sendGoalToDB)
+
+$('textarea')
+    .keyup(fillIcons)
+
+$('#reps')
+    .keyup(changeTimes)
+
+$(".timeframe")
+    .click(toggleButtonColor)
+    .click(changeIncentiveAmount)
+    .click(fillIcons)
+    .click(writeLiftObject)
+    .click(allowSubmit)
+
+</script>
+
+</div>
+
+</body>
+</html>
