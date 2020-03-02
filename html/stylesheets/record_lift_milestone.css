@@ -1,46 +1,34 @@
-
-
-
 .wrapper{
     width: 100%; min-height: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(6,auto);
-    grid-template-rows: auto; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
-    grid-gap: 2px;
+    grid-template-rows: repeat(9,auto) 250px;
+    /*grid-gap: 2px;*/
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-}
-
-.icon{ opacity: .3; width: 50px; height: 50px; }
-.filledIcon{ opacity: 1; width: 55px; height: 55px; }
-
-#distanceError, #weightError, #unitsError, #repsError, #timeError, #baselineWeightError, #baselineExceedsGoalError, #baselineFasterThanGoalError, #baselineTimeError, #baselineRepsError{
-    position:absolute;
-    visibility: hidden;
-    color: #3C2D50;
-    font-size: 12px;
-    font-family: Courier;
-}
-
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    /*background: white;*/
-    background: #8A94B9;
-    min-height: 100%;
-}
-
-
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+body{ background: #8A94B9; min-height: 100%; }
 a{ text-decoration: none; }
+
+.item{
+    background: white;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-family: Tw Cen Mt;
+}
+
+.item1,.item5,.item9,.item13, .item17, .item21, .item23, .item25{ text-align: right; }
+
+.item2, .item6, .item10, .item14, .item18, .item22, .item24{ grid-column: span 3; text-align:left;}
+
+.item3{ grid-column: span 2; grid-row: span 7; }
+
+#navBarLeft, #navBarRight { grid-column: span 1; }
+#navBarLeft{ padding-left: 15px; text-align: left; }
+#navBarRight{ padding-right: 15px; text-align: right; }
+#navBarMid{ grid-column: span 4; text-align: center; }
 
 #profileIcon{ opacity: .6; width: 40px; height: 40px; }
 #profileIcon:hover{ opacity: .9; }
@@ -61,11 +49,6 @@ a{ text-decoration: none; }
     padding-bottom:8px;
 }
 
-#navBarLeft, #navBarRight { grid-column: span 1; }
-#navBarLeft{ padding-left: 15px; text-align: left; }
-#navBarRight{ padding-right: 15px; text-align: right; }
-#navBarMid{ grid-column: span 4; text-align: center; }
-
 .innerGoalTitle {
     padding-top: 30px;
     padding-bottom: 20px;
@@ -76,18 +59,48 @@ a{ text-decoration: none; }
     padding-bottom: 20px;
 }
 
-.item{
-    background: white;
-    color: black;
-    padding: 15px;
-    text-align: center;
-    font-family: Tw Cen Mt;
+.sectionTitle{
+    font-family: Courier;
+    font-size: 16px;
+    color: #474444;
 }
-/*
-.item1, .item2, .item3, .item4, .item5, .item6, .item7, .item8, .item9{
-    grid-column: span 6;
-}*/
 
+.firstRow{
+    padding-top: 60px;
+    padding:right: 200px;
+}
+
+.bigIcon{
+    height: 200px;
+    width:auto;
+    fill:black;
+    opacity: .3;
+}
+
+.previousInput{
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-indent: 2px;
+    display: inline;
+    width: auto;
+    margin: 0px;
+    text-align: left;
+    text-indent: 12px;
+    border-radius: 12px;
+    border-top-right-radius: 6px;
+    background: #8A94B9;
+}
+
+.iconSection{
+    padding-right:150px;
+    padding-top: 60px;
+}
+
+.innerSectionTitleDiv{
+    padding-left:150px;
+}
 
 #incentiveDescription{
     display: inline-block;
@@ -98,21 +111,16 @@ a{ text-decoration: none; }
     display:inline;
 }
 
-.preface{
-    font-family: TW Cen Mt;
-    font-size:22px;
-}
-
-.exerciseInput, .baselineInput, .activityInput{
+.exerciseInput{
     font-family: Courier;
-    font-size: 20px;
+    font-size: 16px;
     display: inline;
     width: auto;
     margin: 0px;
     background: none;
     text-align: left;
-    text-indent: 12px;
-    height: 32px;
+    text-indent: 10px;
+    height: 26px;
     border: 1px;
     border-radius: 12px;
     border-top-right-radius: 6px;
@@ -146,12 +154,6 @@ a{ text-decoration: none; }
     padding-right: 30px;
     padding-left: 30px;
     font-size: calc(7px + .6vw + .2vh);
-}
-
-.sectionTitle{
-    font-size: 3vh;
-    font-family: Calibri;
-    font-weight: 800;
 }
 
 .timeframe:hover{color:black;}

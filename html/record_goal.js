@@ -164,18 +164,19 @@ var liftObject = {
     goalID:"",
     goaltype: "weightlifting",
     confirmed:"", // once a payment has been received for a goal, it will be confirmed
-    lift: "",
-    weight:"",
+    lift: "", //
+    goalWeight:"",
     reps: "",
     units:"",
     baselineWeight:"",
+    thisMilestoneWeight:"",
     startDate:"",
     endDate:""
 }
 
 function writeLiftObject(){
     liftObject.lift = $('#exercise').val()
-    liftObject.weight = $('#weight').val()
+    liftObject.goalWeight = $('#weight').val()
     liftObject.reps = $('#reps').val()
     liftObject.units = $('#units').val()
     liftObject.baselineWeight = $('#baselineWeight').val()
