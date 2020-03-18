@@ -8,14 +8,11 @@
     /*grid-gap: 2px;*/
 }
 
-.item6, .item10, .item14, .item18{
+.item6, .item10, .item14, .item18, .item22{
     grid-column: span 3;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-}
+.buttonDiv{ text-align:right; }
 
 .title{
     padding-left: 130px;
@@ -47,8 +44,6 @@ body{
 img{ width: 50px; height: 50px; }
 
 a{ text-decoration: none; }
-
-#goToGoal{ color:white; }
 
 #profileIcon{ opacity: .6; width: 40px; height: 40px; }
 #profileIcon:hover{ opacity: .9; }
@@ -236,21 +231,30 @@ and (-webkit-device-pixel-ratio : 3) {
     color: white;
 }
 
-#goToGoal:hover{
+.goToGoal:hover{
     background: #8A94B9;
     border-color: #8A94B9;
     color: black;
     cursor: pointer;
 }
 
-#goToGoal{
+.goToGoal{
     font-family: Tw Cen Mt;
-    /*font-family: Courier;*/
     padding: 7px 13px;
     border-radius: 9px; border-width: 1px; border-color: #615B5B;
     font-size: 14px;
     color: white; background: #474444;
 }
+
+.disallowed{
+    pointer-events:none;
+    font-family: Tw Cen Mt;
+    padding: 7px 13px;
+    border-radius: 9px; border-width: 1px; border-color: #CECDD3;
+    font-size: 14px;
+    color: white; background: #CECDD3;
+}
+
 
 /*br {
    display: block;

@@ -23,6 +23,7 @@
             <form class = "userInput"><input class ="activityInput" id = "reps" type ="text" placeholder="5"></form>
             <span class = "preface" id = "goalTimes"> times </span>
             <!-- reposition and format errors -->
+            <ul class = "goalErrors"></ul>
             <ul id = "errorsList"><li id = "repsError"> make sure that you enter a number here! </li></ul>
         </div>
     </div>
@@ -73,6 +74,14 @@ function setEndDate(){
     endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
     today = new Date()
     return endDate
+}
+
+var goal = {
+    goalID:"",
+    goalType: commitment{activity:"", numTimes:""},
+
+
+
 }
 
 var commitmentObject = {

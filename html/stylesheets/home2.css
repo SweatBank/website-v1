@@ -49,7 +49,6 @@ a{ text-decoration: none; }
 
 .button:hover{
     background: #8A94B9;
-    border-color: red;
     color: black;
     cursor: pointer;
 }

@@ -7,6 +7,10 @@
     /*grid-gap: 2px;*/
 }
 
+.itemFirstCol{
+    grid-template-columns: 100px;
+}
+
 *{ box-sizing: border-box; margin: 0; padding: 0; }
 body{ background: #8A94B9; min-height: 100%; }
 a{ text-decoration: none; }
@@ -19,11 +23,13 @@ a{ text-decoration: none; }
     font-family: Tw Cen Mt;
 }
 
-.item1,.item5,.item9,.item13, .item17, .item21, .item23, .item25{ text-align: right; }
-
-.item2, .item6, .item10, .item14, .item18, .item22, .item24{ grid-column: span 3; text-align:left;}
-
-.item3{ grid-column: span 2; grid-row: span 7; }
+.titleDiv{ grid-column: span 2; text-align:right;}
+.contentDiv{ grid-column: span 4; text-align:left;}
+.bottomRow{
+    grid-column: span 6;
+    text-align:left;
+    height: 300px;
+}
 
 #navBarLeft, #navBarRight { grid-column: span 1; }
 #navBarLeft{ padding-left: 15px; text-align: left; }
@@ -66,40 +72,32 @@ a{ text-decoration: none; }
 }
 
 .firstRow{
-    padding-top: 60px;
-    padding:right: 200px;
+    padding-top: 40px;
+    /*padding:right: 200px; */
 }
 
-.bigIcon{
-    height: 200px;
+.goalTypeIcon{
+    height: 30px;
     width:auto;
     fill:black;
     opacity: .3;
 }
 
 .previousInput{
-    padding-left: 10px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px; padding-right: 10px;
+    padding-top: 5px; padding-bottom: 5px;
     text-indent: 2px;
     display: inline;
-    width: auto;
-    margin: 0px;
-    text-align: left;
-    text-indent: 12px;
     border-radius: 12px;
     border-top-right-radius: 6px;
     background: #8A94B9;
 }
 
-.iconSection{
-    padding-right:150px;
-    padding-top: 60px;
-}
+.buttonSection{ padding-top:20px; text-align:right; }
+.iconSection{ padding-top:20px; text-align:left; }
 
 .innerSectionTitleDiv{
-    padding-left:150px;
+    text-align:right;
 }
 
 #incentiveDescription{
@@ -268,13 +266,6 @@ and (-webkit-device-pixel-ratio : 3) {
         border-color: #8A94B9;
         color: black;
         cursor: pointer;
-    }
-
-    /* this is currently a hack because for some reason the preface class is not shrinking
-    any text except for this one, so this needs a font-size adjustment to override*/
-
-    #iWant{
-        font-size:48px;
     }
 
     .submit{

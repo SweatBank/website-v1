@@ -154,20 +154,48 @@ function allowSubmit(){
     else { $(".submit").addClass("disallowed") }
 }
 
-// lift only
 var today = new Date()
 var endDate = ""
 var timeFrame = ""
 var liftObjectJSON = ""
 
-var liftObject = {
-    goalID:"",
-    goaltype: "weightlifting",
-    confirmed:"", // once a payment has been received for a goal, it will be confirmed
-    lift: "", //
+// what other properties should be stored in the lift object? this milestone date?
+
+var goal = {
+    goalID: "",
+    completeGoalString:"",
+    goalType: weightlifting,
+    status: goalStatus
+}
+
+var goalStatus = {
+    startDate:"",
+    endDate:"",
+    daysLeft:"",
+    goalComplete:"",
+}
+
+var weightlifting = {
+    lift:"",
     goalWeight:"",
+    reps:"",
+    units:"",
+    baselineWeight:"",
+    thisMilestoneWeight:""
+}
+
+var liftObject = {
+    userID:"", // do we want this associated with each goal object?
+    goalID:"",
+    completeGoalString:"",
+    goalType: "weightlifting",
+    goalStatus: "", // options: in-progress, achieved, expired
+    dateAchieved:"", // not needed for any basic functionality, but could be useful for backwards-looking dashboard
+    depositPaid:"", // payment-related, think about this down the road
+    lift: "", //
     reps: "",
     units:"",
+    goalWeight:"",
     baselineWeight:"",
     thisMilestoneWeight:"",
     startDate:"",
@@ -185,9 +213,11 @@ function writeLiftObject(){
     liftObjectJSON = JSON.stringify(liftObject)
 }
 
+
+
 function sendGoalToDB(){
   $.ajax({
-        url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
+        url: "http://ec2-18-209-157-101.compute-1.amazonaws.com",
         type: "POST",
         data: liftObjectJSON,
         dataType: 'json', // lowercase is always preferered though jQuery does it, too.
