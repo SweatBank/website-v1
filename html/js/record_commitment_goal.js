@@ -1,69 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Commitment</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal2.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-</head>
-
-<body>
-
-<div class = "wrapper">
-
-    <div class ="item item0 banner" id ="navBarLeft"><div class = "homelink"><a  href= "file:home2.html"> <span id ="home"> sweatbank </span> </a></div></div>
-    <div class ="item item0 banner" id ="navBarMid"></div>
-    <div class ="item item0 banner" id ="navBarRight"><a  href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
-
-    <div class ="item item1">
-        <div class = "innerGoalTitle">
-            <span class = "sectionTitle"> <img src="images/commitment.svg" id="goal" class = "icon"> </span> <br> <br>
-            <span class = "preface"> My goal is to </span>
-            <form class = "userInput"><input class ="activityInput" id = "activity" type ="text" placeholder="go to spin class" autofocus=""></form>
-            <form class = "userInput"><input class ="activityInput" id = "reps" type ="text" placeholder="5"></form>
-            <span class = "preface" id = "goalTimes"> times </span>
-            <!-- reposition and format errors -->
-            <ul class = "goalErrors"></ul>
-            <ul id = "errorsList"><li id = "repsError"> make sure that you enter a number here! </li></ul>
-        </div>
-    </div>
-
-    <!-- <div class ="item item2"></div> -->
-
-    <div class ="item item3">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe" class = "icon"> </span> <br> <br>
-            <span class = "preface"> I want to achieve my goal in </span> <br> <br>
-            <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
-            <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
-            <button class = "timeframe" id="threeWeeks"> 3 weeks </button> &nbsp
-            <button class = "timeframe" id="fourWeeks"> 4 weeks </button>
-        </div>
-    </div>
-
-    <div class ="item item4">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/incentive.svg" id="incentive" class = "icon"> </span> <br><br>
-            <span id = "incentiveDollarSign"> $ </span> <span id = "incentiveAmount"></span>
-            <!-- <span id = "incentiveDescription"> This is the money you will put on the line for extra motivation!</span> -->
-        </div>
-    </div>
-
-    <div class ="item item5">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes" class = "icon"> </span> <br> <br> <br>
-            <form class = "userInput"><textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea></form>
-        </div>
-    </div>
-
-    <div class ="item item6">
-        <br>
-        <button class = "submit disallowed"> confirm goal & select charity </button>
-    </div>
-    <div class ="item item8"></div>
-    <div class ="item item9"></div>
-
-<script>
 
 var today = new Date()
 var endDate = ""
@@ -76,13 +10,10 @@ function setEndDate(){
     return endDate
 }
 
-var goal = {
-    goalID:"",
-    goalType: commitment{activity:"", numTimes:""},
-
-
-
-}
+// var goal = {
+//     goalID:"",
+//     goalType: commitment{activity:"", numTimes:""},
+// }
 
 var commitmentObject = {
     goalID:"",
@@ -162,15 +93,10 @@ function toggleButtonColor(){
     }
 }
 
-function checkError(){ // unique to goal type
-    if($("#reps").val().length>0 & isNaN($("#reps").val())){ $("#repsError").css("visibility","visible") }
-    else { $("#repsError").css("visibility","hidden") }
-}
-
 function fillIcons() {
 
     // goal icon - unique to goal type
-    if($("#activity").val().length>0 & $("#reps").val().length>0 & !isNaN($("#reps").val())){
+    if($("#activity").val().length>0 & $("#reps").val().length>0 & !isNaN($("#reps").val()) & $("#reps").val()>0 ){
         $("#goal").addClass("filledIcon")
     } else {
         $("#goal").removeClass("filledIcon")
@@ -190,9 +116,14 @@ function fillIcons() {
     else { $("#notes").removeClass("filledIcon") }
 }
 
-function changeBackground(){ // COMMON ACROSS GOAL TYPES
-    if($(this).val().length>0){ $(this).css('background-color','#8A94B9') }
-    else { $(this).css('background-color','#C6C0CA') }
+function changeBackground(){
+    if($(this).val().length>0){
+        if($(this).hasClass("numberInput")){
+            if(!isNaN(Number($(this).val())) & $(this).val()>0){
+                $(this).css('background-color','#8A94B9')
+            } else { $(this).css('background-color','#C6C0CA') }
+        } else { $(this).css('background-color','#8A94B9') }
+    } else { $(this).css('background-color','#C6C0CA') }
 }
 
 function allowSubmit(){ // unique to goal type
@@ -217,7 +148,7 @@ $('input[type="text"]')
     // event handler
     .keyup(resizeInput)
     .keyup(fillIcons)
-    .keyup(checkError)
+    // .keyup(checkError)
     .keyup(changeBackground)
     .keyup(writeCommitmentObject)
     .keyup(allowSubmit)
@@ -239,9 +170,10 @@ $(".timeframe")
     .click(writeCommitmentObject)
     .click(allowSubmit)
 
-</script>
 
-</div>
+// OLD CODE - removing error pop-ups in favor of using fill
 
-</body>
-</html>
+// function checkError(){
+//     if($("#reps").val().length>0 & isNaN($("#reps").val())){ $("#repsError").css("visibility","visible") }
+//     else { $("#repsError").css("visibility","hidden") }
+// }

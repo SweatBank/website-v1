@@ -1,78 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Bodyweight Goal</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/record_goal2.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-</head>
-
-<body>
-
-<div class = "wrapper">
-
-    <div class ="item item0 banner" id ="navBarLeft">
-        <div class = "homelink"><a  href= "file:home2.html"> <span id ="home"> sweatbank </span> </a></div>
-    </div>
-
-    <div class ="item item0 banner" id ="navBarMid"></div>
-    <div class ="item item0 banner" id ="navBarRight"><a  href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
-
-    <div class ="item item1">
-        <div class = "innerGoalTitle">
-            <span class = "sectionTitle"> <img src="images/bodyweight2.svg" id="goal" class = "icon"> </span> <br> <br>
-            <span class = "preface"> My goal is to be able to do </span>
-            <form class = "userInput"><input class ="exerciseInput" id = "reps" type ="text" placeholder="8" autofocus></form>
-            <form class = "userInput"><input class ="exerciseInput" id = "exercise" type ="text" placeholder="pull ups"></form>
-            <!-- <ul id = "errorsList"><li id = "repsError"> make sure that your reps are a number! </li></ul> -->
-        </div>
-    </div>
-
-    <div class ="item item2">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/baseline.svg" id="baseline" class = "icon"> </span> <br> <br>
-            <span class = "preface"> I can currently do </span>
-            <form class = "userInput"><input class ="baselineInput" id = "baselineReps" type ="text" placeholder="6"></form></span> &nbsp
-            <span class = "preface" id = "baselineExercise"> pull ups </span>
-            <span id = "baselineRepsError"> make sure that your reps are a number! </span>
-        </div>
-    </div>
-
-    <div class ="item item3">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/timeframe.svg" id="timeframe" class = "icon"> </span> <br> <br>
-            <span class = "preface"> I want to achieve my goal in </span> <br> <br>
-            <button class = "timeframe" id="oneWeek"> 1 week </button> &nbsp
-            <button class = "timeframe" id="twoWeeks"> 2 weeks </button> &nbsp
-            <button class = "timeframe" id="threeWeeks"> 3 weeks </button> &nbsp
-            <button class = "timeframe" id="fourWeeks"> 4 weeks </button>
-        </div>
-    </div>
-
-    <div class ="item item4">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/incentive.svg" id="incentive" class = "icon"> </span> <br><br>
-            <span id = "incentiveDollarSign"> $ </span> <span id = "incentiveAmount"></span>
-            <!-- <span id = "incentiveDescription">This is the money you will put on the line for extra motivation!</span> -->
-        </div>
-    </div>
-
-    <div class ="item item5">
-        <div class = "innerGoalSection">
-            <span class = "sectionTitle"> <img src="images/notebook.svg" id="notes" class = "icon"> </span> <br> <br> <br>
-            <form class = "userInput"><textarea class ="notesInput" id = "noteArea" type ="text" placeholder="Add some words of encouragement or a note to yourself about why this is important to you (optional)."></textarea></form>
-        </div>
-    </div>
-
-    <div class ="item item6">
-        <br>
-        <button class = "submit disallowed"> confirm goal & select charity </button>
-    </div>
-    <div class ="item item8"></div>
-    <div class ="item item9"></div>
-
-<script>
-
 var today = new Date()
 var endDate = ""
 var timeFrame = ""
@@ -121,9 +46,6 @@ function selectTimeframe(){
     }
 }
 
-function focusInput(){
-    $("#exercise").focus()
-}
 
 function resizeInput() {
     if($(this).val().length>=1){
@@ -133,20 +55,7 @@ function resizeInput() {
     }
 }
 
-function startSizeInput() {
-    $(this).attr('size', $(this).attr('placeholder').length+2);
-}
-
-function changeTimes(){
-    if ($('#reps').val()!=1){
-        $('#goalTimes').html('times')
-        $('#baselineTimes').html('times')
-
-    } else {
-        $('#goalTimes').html('time')
-        $('#baselineTimes').html('time')
-    }
-}
+function startSizeInput() { $(this).attr('size', $(this).attr('placeholder').length+2); }
 
 function replaceBaseline(){
     if($('#exercise').val().length>=1){
@@ -187,22 +96,6 @@ function toggleButtonColor(){
     }
 }
 
-function checkError(){
-
-    if($("#reps").val().length>0 & isNaN($("#reps").val())){
-        $("#repsError").css("visibility","visible");
-    } else {
-        $("#repsError").css("visibility","hidden");
-    }
-
-    if($("#baselineReps").val().length>0 & isNaN($("#baselineReps").val())){
-        $("#baselineRepsError").css("visibility","visible");
-    } else {
-        $("#baselineRepsError").css("visibility","hidden");
-    }
-
-}
-
 function allowSubmit(){
     if($("#goal").css("opacity") == 1 & $("#timeframe").css("opacity") == 1 & $("#baseline").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
     else { $(".submit").addClass("disallowed") }
@@ -215,7 +108,7 @@ function fillIcons() {
         $("#goal").removeClass("filledIcon")
     }
 
-    if($("#baselineReps").val().length>0 & $("#baselineReps").val()>0){
+    if($("#baselineReps").val().length>0 & $("#baselineReps").val()>0 & ( Number($("#baselineReps").val())<Number($("#reps").val()) | $("#reps").val().length == 0 )){
         $("#baseline").addClass("filledIcon")
     } else {
         $("#baseline").removeClass("filledIcon")
@@ -237,11 +130,22 @@ function fillIcons() {
 }
 
 function changeBackground(){
+
+    // number input handler
     if($(this).val().length>0){
-        $(this).css('background-color','#8A94B9')
-    } else {
-        $(this).css('background-color','#C6C0CA')
-    }
+        if($(this).hasClass("numberInput")){
+            if(!isNaN(Number($(this).val())) & $(this).val()>0){
+                $(this).css('background-color','#8A94B9')
+            } else { $(this).css('background-color','#C6C0CA') }
+        } else { $(this).css('background-color','#8A94B9') }
+    } else { $(this).css('background-color','#C6C0CA') }
+
+    // baseline error handler
+    if( Number($("#baselineReps").val()) < Number($("#reps").val()) & $("#baselineReps").val().length > 0 & $("#baselineReps").val()>=0 |
+        ($("#baselineReps").val().length > 0 & !isNaN(Number($("#baselineReps").val())) & $("#reps").val().length == 0 & $("#baselineReps").val()>=0)){
+        $("#baselineReps").css('background-color','#8A94B9')
+    } else { $("#baselineReps").css('background-color','#C6C0CA') }
+
 }
 
 function sendGoalToDB(){
@@ -264,7 +168,7 @@ $('input[type="text"]')
     // event handler
     .keyup(resizeInput)
     .keyup(fillIcons)
-    .keyup(checkError)
+    // .keyup(checkError)
     .keyup(replaceBaseline)
     .keyup(changeBackground)
     .keyup(writeBodyweightObject)
@@ -277,9 +181,6 @@ $('.submit')
 $('textarea')
     .keyup(fillIcons)
 
-$('#reps')
-    .keyup(changeTimes)
-
 $(".timeframe")
     .click(toggleButtonColor)
     .click(selectTimeframe)
@@ -287,9 +188,20 @@ $(".timeframe")
     .click(writeBodyweightObject)
     .click(allowSubmit)
 
-</script>
 
-</div>
+// OLD CODE - removing error pop-ups in favor of using fill
 
-</body>
-</html>
+// function checkError(){
+
+//     if($("#reps").val().length>0 & isNaN($("#reps").val())){
+//         $("#repsError").css("visibility","visible");
+//     } else {
+//         $("#repsError").css("visibility","hidden");
+//     }
+
+//     if($("#baselineReps").val().length>0 & isNaN($("#baselineReps").val())){
+//         $("#baselineRepsError").css("visibility","visible");
+//     } else {
+//         $("#baselineRepsError").css("visibility","hidden");
+//     }
+// }

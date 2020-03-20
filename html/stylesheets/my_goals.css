@@ -3,13 +3,16 @@
 body{ background: #8A94B9; min-height: 100%; }
 a{ text-decoration: none; }
 
+button:focus { outline: none; }
+
 .wrapper{
     width: 100%; min-height: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(6,auto);
-    grid-template-rows: repeat(9,auto) 250px;
-    /*grid-gap: 2px;*/
+    grid-template-rows: auto;
+    justify-items:bottom;
+    /*grid-gap: 1px;*/
 }
 
 .item{
@@ -20,12 +23,30 @@ a{ text-decoration: none; }
     text-align: center;
     font-family: Tw Cen Mt;
     font-size: 17px;
+    align-items: end;
+}
+
+.contentDiv{
+    position: relative;
+    vertical-align: bottom;
+    align-self: bottom;
+    text-align:center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.internalContentDiv{
+    /*position:absolute;*/
+    /*padding: 15px;*/
+    /*bottom:0px;*/
 }
 
 .goalTypeIcon{ height: 45px; width:auto; }
 
-.firstCol{ padding-left: 80px; }
-.lastCol{ padding-right: 80px; }
+.firstCol{ padding-right: 15px; text-align:right;}
+.lastCol{ padding-left: 15px; text-align:left;}
 
 .headerDiv{
     padding-top: 30px;
@@ -42,16 +63,16 @@ a{ text-decoration: none; }
 .progressDiv{ text-align:center; }
 
 .progressBar, .progressFill{
-    border-radius: 10px;
+    /*border:none;*/
+    border-color: #474444;
+    border-width: 2px;
+    /*border-radius: 6px;*/
 }
 
-.progressBar{
-    width: 80px;
-    background: #474444;
-}
+.progressBar{ width: 70px; background: #474444; }
 
 .progressFill{
-    padding: 12px; /* padding is effectively the height property*/
+    padding: 10px; /* padding is effectively the height property*/
     width: 75%; /* width is effectively the 'progress' property*/
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -59,10 +80,10 @@ a{ text-decoration: none; }
 }
 
 #addMilestoneButton{
-    border-radius: 100px;
+    border-radius: 10px;
     border-width: 2px;
-    padding-top: 4px; padding-bottom: 4px;
-    padding-right: 8px; padding-left: 8px;
+    padding-top: 2px; padding-bottom: 2px;
+    padding-right: 5px; padding-left: 5px;
     background: none;
     border-color: #474444;
 }

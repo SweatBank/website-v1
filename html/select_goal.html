@@ -4,6 +4,7 @@
 <head>
     <title>Select Goal</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/select_goal.css" />
+    <link rel="icon" href="file:images/sb_icon2.svg">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
@@ -41,8 +42,8 @@
             <span class =  "examples" id = "commitmentDescription">
             <span class = "typename"> commitment:  </span>
             going to yoga class, taking a morning stroll, meditating, etc <br>
-            information: healthy activity, number of times <br>
-            example: to bike to work 3 times
+            information: activity, number of times <br>
+            example: bike to work 3 times this week
             </span>
         </div>
     </div>
@@ -62,8 +63,8 @@
             <span class = "typename"> paced: </span>
             <span class =  "examples" id = "tempoDescription">
             running, walking, biking, swimming, etc <br>
-            information: how you will move, distance, time <br>
-            example: to be able to run 2 miles in 15 minutes
+            information: type of exercise, distance, time <br>
+            example: run 2 miles in 15 minutes
             </span>
         </div>
     </div>
@@ -84,7 +85,7 @@
             <span class =  "examples" id = "bodyweightDescription">
             push ups, pull ups, burpees, etc <br>
             information: exercise, number of reps <br>
-            example: to be able to do 5 pull ups
+            example: 5 pull ups
             </span>
         </div>
     </div>
@@ -105,7 +106,7 @@
             <span class =  "examples" id = "weightliftingDescription">
             squats, curls, lunges, bench, single-leg russian twists, etc <br>
             information: exercise, weight, number of reps <br>
-            example: to be able to squat 200 lbs for 6 reps
+            example: squat 200 lbs for 6 reps
             </span>
         </div>
     </div>
@@ -178,25 +179,25 @@ function textFill(){
     if ($("#weightlifting").hasClass("selected")){
         $("#weightliftingDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#weightliftingDescription").css("color","grey")
-        $(".goToGoal").attr("href", "record_lift_goal2.html")
+        $(".goToGoal").attr("href", "record_lift_goal.html")
         $("#nextButton").removeClass("disallowed")
 
     } else if ($("#bodyweight").hasClass("selected")) {
         $("#bodyweightDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#bodyweightDescription").css("color","grey")
-        $(".goToGoal").attr("href", "record_bodyweight_goal2.html")
+        $(".goToGoal").attr("href", "record_bodyweight_goal.html")
         $("#nextButton").removeClass("disallowed")
 
     } else if ($("#tempo").hasClass("selected")) {
         $("#tempoDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#tempoDescription").css("color","grey")
-        $(".goToGoal").attr("href", "record_tempo_goal2.html")
+        $(".goToGoal").attr("href", "record_tempo_goal.html")
         $("#nextButton").removeClass("disallowed")
 
     } else if ($("#commitment").hasClass("selected")) {
         $("#commitmentDescription").css("color","#5F527F")
         $(".description").find(".examples").not("#commitmentDescription").css("color","grey")
-        $(".goToGoal").attr("href", "record_commitment_goal2.html")
+        $(".goToGoal").attr("href", "record_commitment_goal.html")
         $("#nextButton").removeClass("disallowed")
 
     } else {

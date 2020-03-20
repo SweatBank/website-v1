@@ -1,11 +1,16 @@
-// common function
+
+
+// Unsuccessful attempts to pull common functions out of each goaltype's js file
+
+// $.getScript("common_goal_functions");
+// import { selectTimeframe } from './common_goal_functions.mjs'
+
 function setEndDate(){
     endDate = new Date(today.setDate(today.getDate() + (timeFrame * 7)))
     today = new Date()
     return endDate
 }
 
-// common function
 function selectTimeframe(){
     if($("#oneWeek").hasClass("selected")){
         $("#incentiveAmount").html(5)
@@ -24,16 +29,14 @@ function selectTimeframe(){
         timeFrame = 0
     }
 }
-// common function
+
 function resizeInput() {
     if( $(this).val().length>=1 ) { $(this).attr('size', $(this).val().length+2) }
     else { $(this).attr('size', $(this).attr('placeholder').length+2) }
 }
 
-// common function
 function startSizeInput() { $(this).attr('size', $(this).attr('placeholder').length+2) }
 
-// Lift only function
 function changeTimes(){ // changes the placeholder word from "times" to "time" if the number of reps is 1
     if ($('#reps').val()!=1){
         $('#goalTimes').html('times')
@@ -44,7 +47,6 @@ function changeTimes(){ // changes the placeholder word from "times" to "time" i
     }
 }
 
-// common function
 function toggleButtonColor(){
     if ($(this).hasClass("selected")){
 
@@ -70,13 +72,29 @@ function toggleButtonColor(){
     }
 }
 
-// common function
 function changeBackground(){
-    if($(this).val().length>0){ $(this).css('background-color','#8A94B9') }
-    else { $(this).css('background-color','#C6C0CA') }
+
+    // number input handler
+    if($(this).val().length>0){
+        if($(this).hasClass("numberInput")){
+            if(!isNaN(Number($(this).val())) & $(this).val()>0){
+                $(this).css('background-color','#8A94B9')
+            } else { $(this).css('background-color','#C6C0CA') }
+        } else { $(this).css('background-color','#8A94B9') }
+    } else { $(this).css('background-color','#C6C0CA') }
+
+    // units error handler
+    if ( $("#units").val() == "lbs" | $("#units").val() == "kg" ){
+        $("#units").css('background-color','#8A94B9')
+    } else { $("#units").css('background-color','#C6C0CA') }
+
+    // baseline error handler
+    if( Number($("#baselineWeight").val()) < Number($("#weight").val()) & $("#baselineWeight").val().length > 0 & $("#baselineWeight").val()>0 |
+        ($("#baselineWeight").val().length > 0 & !isNaN(Number($("#baselineWeight").val())) & $("#weight").val().length == 0 & $("#baselineWeight").val()>0)){
+        $("#baselineWeight").css('background-color','#8A94B9')
+    } else { $("#baselineWeight").css('background-color','#C6C0CA') }
 }
 
-// lift only function
 function replaceBaseline(){ // replaces baseline placeholder text based on goal text
     if($('#exercise').val().length>=1){ $('#baselineExercise').html($('#exercise').val()) }
     else { $('#baselineExercise').html('squat') }
@@ -86,36 +104,6 @@ function replaceBaseline(){ // replaces baseline placeholder text based on goal 
 
     if($('#reps').val().length>=1){$('#baselineLiftReps').html($('#reps').val())}
     else {$('#baselineLiftReps').html('8')}
-}
-
-// lift only function
-function checkError(){
-
-    // baseline > goal error
-    if ($("#weight").val().length > 0 & Number($("#baselineWeight").val()) >= Number($("#weight").val())) { $("#baselineExceedsGoalError").css("visibility","visible") }
-    else { $("#baselineExceedsGoalError").css("visibility","hidden") }
-
-    // non-numerical weight error
-    if ($("#weight").val().length>0 & isNaN($("#weight").val())) { $("#weightError").css("visibility","visible") }
-    else { $("#weightError").css("visibility","hidden") }
-
-    // non-standard units error
-    if ($("#units").val().length>0 & $("#units").val() != "kg" & $("#units").val() != "lbs"){ $("#unitsError").css("visibility","visible") }
-    else { $("#unitsError").css("visibility","hidden") }
-
-    // non-numerical reps error
-    if($("#reps").val().length>0 & isNaN($("#reps").val())){
-        $("#repsError").css("visibility","visible");
-    } else {
-        $("#repsError").css("visibility","hidden");
-    }
-
-    // non-numerical baseline weight error
-    if($("#baselineWeight").val().length>0 & isNaN($("#baselineWeight").val())){
-        $("#baselineWeightError").css("visibility","visible");
-    } else {
-        $("#baselineWeightError").css("visibility","hidden");
-    }
 }
 
 function fillIcons() {
@@ -148,7 +136,6 @@ function fillIcons() {
     else { $("#notes").removeClass("filledIcon") }
 }
 
-// lift only function
 function allowSubmit(){
     if($("#goal").css("opacity") == 1 & $("#timeframe").css("opacity") == 1 & $("#baseline").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
     else { $(".submit").addClass("disallowed") }
@@ -213,8 +200,6 @@ function writeLiftObject(){
     liftObjectJSON = JSON.stringify(liftObject)
 }
 
-
-
 function sendGoalToDB(){
   $.ajax({
         url: "http://ec2-18-209-157-101.compute-1.amazonaws.com",
@@ -226,17 +211,21 @@ function sendGoalToDB(){
     });
 }
 
+
+// resize fiddle: http://jsfiddle.net/FSsG8/444/
+
 // Event Handlers
 
 $('input[type="text"]')
     .keyup(resizeInput)
     .keyup(fillIcons)
-    .keyup(checkError)
+    // .keyup(checkError)
     .keyup(replaceBaseline)
     .keyup(changeBackground)
     .keyup(writeLiftObject)
     .keyup(allowSubmit)
     .each(startSizeInput) //resize on page load
+
 
 $('.submit')
     .click(sendGoalToDB)
@@ -254,4 +243,34 @@ $(".timeframe")
     .click(writeLiftObject)
     .click(allowSubmit)
 
+// OLD CODE - removing error pop-ups in favor of using fill
+
+// function checkError(){
+
+//     // baseline > goal error
+//     if ($("#weight").val().length > 0 & Number($("#baselineWeight").val()) >= Number($("#weight").val())) { $("#baselineExceedsGoalError").css("visibility","visible") }
+//     else { $("#baselineExceedsGoalError").css("visibility","hidden") }
+
+//     // non-numerical weight error
+//     if ($("#weight").val().length>0 & isNaN($("#weight").val())) { $("#weightError").css("visibility","visible") }
+//     else { $("#weightError").css("visibility","hidden") }
+
+//     // non-standard units error
+//     if ($("#units").val().length>0 & $("#units").val() != "kg" & $("#units").val() != "lbs"){ $("#unitsError").css("visibility","visible") }
+//     else { $("#unitsError").css("visibility","hidden") }
+
+//     // non-numerical reps error
+//     if($("#reps").val().length>0 & isNaN($("#reps").val())){
+//         $("#repsError").css("visibility","visible");
+//     } else {
+//         $("#repsError").css("visibility","hidden");
+//     }
+
+//     // non-numerical baseline weight error
+//     if($("#baselineWeight").val().length>0 & isNaN($("#baselineWeight").val())){
+//         $("#baselineWeightError").css("visibility","visible");
+//     } else {
+//         $("#baselineWeightError").css("visibility","hidden");
+//     }
+// }
 

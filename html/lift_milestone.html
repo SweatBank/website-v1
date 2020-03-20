@@ -4,6 +4,7 @@
 <head>
     <title>Record Milestone</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/record_lift_milestone.css" />
+    <link rel="icon" href="file:images/sb_icon.svg">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </head>
@@ -134,15 +135,15 @@ function startSizeInput() { $(this).attr('size', $(this).attr('placeholder').len
 function changeBackground(){
     if($(this).val().length>0 & !isNaN($(this).val())){
         $(this).css('background-color','#8A94B9')
-        $(".bigIcon").css('opacity',1)
+        $(".goalTypeIcon").css('opacity',1)
     } else {
         $(this).css('background-color','#C6C0CA')
-        $(".bigIcon").css('opacity',.3)
+        $(".goalTypeIcon").css('opacity',.3)
     }
 }
 
 function allowSubmit(){
-    if($(".bigIcon").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
+    if($(".goalTypeIcon").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
     else { $(".submit").addClass("disallowed") }
 }
 
