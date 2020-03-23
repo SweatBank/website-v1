@@ -94,7 +94,6 @@ button:focus { outline: none; }
     color:#474444;
 }
 
-
 #navBarLeft{ grid-column: span 3; padding-left: 15px; text-align: left; }
 #navBarRight{ grid-column: span 3; padding-right: 15px; text-align: right; }
 

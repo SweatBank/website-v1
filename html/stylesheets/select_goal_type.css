@@ -1,0 +1,138 @@
+
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+body{ background: #8A94B9; min-height: 100%; }
+img{ width: 50px; height: 50px; }
+a{ text-decoration: none; }
+
+.wrapper{
+    width: 100%; min-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    grid-template-rows: auto; /*would like to be able to set height of row 1 so that it accomodates multi-line sign in/sign up buttons when screen shrinks*/
+    /*grid-gap: 1px;*/
+}
+
+.item{
+    background: white;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-family: Tw Cen Mt;
+    display: inline-block;
+}
+
+#profileIcon{ opacity: .6; width: 40px; height: 40px; }
+#profileIcon:hover{ opacity: .9; }
+
+#home{
+    color: #8A94B9;
+    font-family: Calibri;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+#home:hover{ color: #3C2D50; }
+
+#navBarLeft{ padding-left: 15px; text-align: left; }
+#navBarRight{ padding-right: 15px; text-align: right; }
+
+#navBarLeft, #navBarRight{
+    background: #C6C0CA;
+    opacity: .9;
+    padding-top:8px; padding-bottom:8px;
+    grid-column: span 2;
+}
+
+.HeaderDiv{
+    padding-top: 50px;
+    padding-bottom: 25px;
+    text-align: left;
+    grid-column: span 2;
+    font-family: Courier;
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.performDiv, .commitDiv{cursor: pointer;}
+.performDiv{padding-left: 10px;}
+
+.performButtonDiv{padding-left: 10px;}
+
+.titleDiv{text-align:left;}
+.iconDiv{text-align:left;}
+.title{ font-family: Tw Cen Mt; font-size: 28px; }
+
+.icon{ width: 110px; height:auto; }
+
+.goaltype, .commitGoal, .performGoal{border: none; opacity: .3;}
+.goaltype:focus, .commitGoal:focus, .performGoal:focus{ outline: none; }
+.goaltype:hover, .commitGoal:hover, .performGoal:hover{ cursor: pointer; }
+
+.goalTypeTitle{}
+
+.infoDiv{ text-align: left; max-width: 360px; }
+
+.info{
+    font-family: Tw Cen Mt;
+    font-size: 15px;
+    text-align: left;
+    max-width: 360px;
+}
+
+.buttonDiv {padding-top: 30px; padding-bottom: 30px; text-align:left;}
+
+.button:hover{ background-position: 0 -100%;}
+
+.button{
+    font-family: Tw Cen Mt;
+    padding: 7px 13px;
+    border-radius: 9px;
+    border-width: 1px;
+    font-size: 15px;
+    color: white;
+    /*background: #474444;*/
+    background-size: 100% 200%;
+    background-image: linear-gradient(to bottom, #474444 50%, #8A94B9 50%);
+    -webkit-transition: background-position .5s;
+    -moz-transition: background-position .5s;
+    transition: background-position .5s;
+}
+
+.disallowed{
+    pointer-events:none;
+    font-family: Tw Cen Mt;
+    padding: 7px 13px;
+    border-radius: 9px; border-width: 1px; border-color: #CECDD3;
+    font-size: 15px;
+    color: white; background: #CECDD3;
+}
+
+.goToGoal:hover{
+    background: #8A94B9;
+    border-color: #8A94B9;
+    color: black;
+    cursor: pointer;
+}
+
+.goToGoal{
+    font-family: Tw Cen Mt;
+    padding: 7px 13px;
+    border-radius: 9px; border-width: 1px; border-color: #615B5B;
+    font-size: 18px;
+    color: white; background: #474444;
+}
+
+.bottomRow{grid-column: span 4; height: 250px;}
+
+
+/* iPhone X */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+
+    /* iPhone styling here*/
+
+}
+

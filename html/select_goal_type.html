@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Select Goal Type</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/select_goal_type.css" />
+    <link rel="icon" href="file:images/sb_icon2.svg">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+    <div class ="item banner" id ="navBarLeft"><a class = "pagelink" href= "file:home.html"> <span id ="home"> sweatbank </span> </a> </div>
+    <div class ="item banner" id ="navBarRight"><a class = "pagelink" href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item HeaderDiv"> Click to select a goal type: </div>
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item commitDiv titleDiv">
+        <button class = "commitGoal" id ="commitmentTitle">
+            <span class = "title"> Commitment </span>
+        </button>
+        <!-- <span class = "title goaltype" > Commitment </span> -->
+    </div>
+
+    <div class = "item performDiv titleDiv">
+        <button class = "performGoal" id ="performanceTitle">
+            <span class = "title"> Performance </span>
+        </button>
+        <!-- <span class = "title goaltype"> Performance </span> -->
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item commitDiv iconDiv">
+        <button class = "commitGoal" id ="commitmentIcon">
+            <img src="images/commitmentIcon.svg" class = "icon">
+        </button>
+    </div>
+
+
+    <!-- could make entire div a button so that cursor doesn't flicker between pointer and cursor when navigating between parts -->
+    <div class = "item performDiv iconDiv">
+        <button class = "performGoal" id ="performanceIcon">
+            <img src="images/performanceIcon.svg" class = "icon">
+        </button>
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item commitDiv commitmentInfoDiv">
+        <div class = "infoDiv">
+            <button class = "commitGoal info" id ="commitmentInfo">
+                <span>
+                    Focus on accountability<br><br>
+                    Commitment goals can be as broad as you would like them to be and are measured by the number of times you do an activity: <br><br>
+                    Examples: going to the gym, biking to work, meditating
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class = "item performDiv performanceInfoDiv">
+        <div class = "infoDiv">
+            <button class = "performGoal info" id ="performanceInfo">
+                <span>
+                    Focus on a specific exercise <br><br>
+                    There are three types of performance goals: <br><br>
+                    Paced: running, biking, swimming, etc. <br>
+                    Bodyweight exercises: push ups, pull ups, etc. <br>
+                    Weightlifting: squats, bench press, curls, etc. <br>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item buttonDiv commitButtonDiv">
+        <a class = "button disallowed" id = "commitmentButton" href= "file:record_commitment_goal.html" >add details</a>
+    </div>
+
+    <div class = "item buttonDiv performButtonDiv">
+        <a class = "button disallowed" id = "performanceButton" href= "file:select_performance_goal.html" >add details</a>
+    </div>
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item emptyDiv bottomRow"> </div>
+
+<script src = "js/select_goal_type.js" type="text/javascript" > </script>
+
+</div>
+
+</body>
+</html>

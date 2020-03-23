@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Performance Goals</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/select_performance_goal.css" />
+    <link rel="icon" href="file:images/sb_icon2.svg">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+
+<div class = "wrapper">
+
+
+    <div class ="item banner" id ="navBarLeft"><a class = "pagelink" href= "file:home.html"> <span id ="home"> sweatbank </span> </a> </div>
+    <!-- <div class ="item banner" id ="navBarMid"></div> -->
+    <div class ="item banner" id ="navBarRight"><a class = "pagelink" href= "file:sweatbank_profile.html"><img src="images/person_head.svg" id="profileIcon"> </a></div>
+
+    <div class = "item emptyDiv"> </div>
+
+    <div class ="item headerDiv firstCol">
+        <span id = "instructions"> Click an icon to select a type of performance goal: </span>
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item emptyDiv"> </div>
+
+    <!-- tempo goal -->
+    <div class ="item iconDiv firstCol">
+        <button class = "goaltype" id="tempo">
+            <img src="images/tempo.svg" id="tempoIcon">
+        </button>
+    </div>
+    <div class ="item textDiv">
+        <div class = "description">
+            <span class = "typename"> paced: </span>
+            <span class =  "examples" id = "tempoDescription">
+            running, walking, biking, swimming, etc <br> information: type of exercise, distance, time <br> example: run 2 miles in 15 minutes
+            </span>
+        </div>
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item emptyDiv"> </div>
+
+    <!-- bodyweight exercise goal -->
+    <div class ="item iconDiv firstCol">
+        <button class = "goaltype" id="bodyweight">
+            <img src="images/bodyweight2.svg" id="bodyweightIcon">
+        </button>
+    </div>
+
+    <div class ="item textDiv">
+        <div class = "description">
+            <span class = "typename"> bodyweight exercise:  </span>
+            <span class =  "examples" id = "bodyweightDescription">
+            push ups, pull ups, burpees, etc <br> information: exercise, number of reps <br> example: 5 pull ups
+            </span>
+        </div>
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item emptyDiv"> </div>
+
+    <!-- lift goal -->
+    <div class ="item iconDiv firstCol">
+        <button class = "goaltype" id="weightlifting">
+            <img src="images/dumbbell.svg" id="weightliftingIcon">
+        </button>
+    </div>
+
+    <div class ="item textDiv">
+        <div class = "description">
+            <span class = "typename"> weightlifting: </span>
+            <span class =  "examples" id = "weightliftingDescription">
+            squats, curls, lunges, bench press, <br> information: exercise, weight, number of reps <br> example: squat 200 lbs for 6 reps
+            </span>
+        </div>
+    </div>
+
+    <div class = "item emptyDiv"> </div>
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item buttonDiv firstCol"> <a class = "disallowed goToGoal" id = "nextButton" href= ""> set goal & timeframe </a> </div>
+    <div class = "item emptyDiv"> </div>
+
+    <div class = "item bottomDiv">  </div>
+
+<script src = "js/select_performance_goal.js" type="text/javascript" > </script>
+
+</div>
+
+</body>
+</html>
