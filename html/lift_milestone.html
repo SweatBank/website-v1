@@ -4,7 +4,7 @@
 <head>
     <title>Record Milestone</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/lift_milestone.css" />
-    <link rel="icon" href="file:images/sb_icon.svg">
+    <link rel="icon" href="images/sb_icon2.svg">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </head>
@@ -43,20 +43,6 @@
     </div>
 
 
-    <!-- <div class ="item titleDiv"> <div class = "innerSectionTitleDiv"><span class = "sectionTitle">last milestone</span></div> </div>
-
-    <div class ="item contentDiv">
-        <div class = "">
-            <span class = "staticText previousInput lastMilestone lift"> squat </span> &nbsp
-            <span class = "staticText previousInput lastMilestone lastMilestoneWeight"> 185 </span> &nbsp
-            <span class = "staticText previousInput lastMilestone units"> lbs </span> &nbsp
-            <span class = "staticText previousInput lastMilestone reps"> 5 </span> &nbsp
-            <span class = "staticText goal"> times </span>
-        </div>
-    </div> -->
-
-
-
     <div class ="item titleDiv"> <div class = "innerSectionTitleDiv"><span class = "sectionTitle">this milestone</span></div> </div>
 
     <div class ="item contentDiv">
@@ -70,17 +56,14 @@
     </div>
 
     <div class ="item titleDiv"> <div class = "innerSectionTitleDiv"><span class = "sectionTitle">today</span></div> </div>
-
-    <div class ="item contentDiv"> <div class = "" id = "today"> <span>  </span> </div> </div>
+    <div class ="item contentDiv"> <div class = "" id = "today"> <span> {function output here} </span> </div> </div>
 
     <div class ="item titleDiv"> <div class = "innerSectionTitleDiv"><span class = "sectionTitle">goal end date</span></div> </div>
-
-    <div class ="item contentDiv"><div class = "" id = "goalEndDate"> <span>  </span> </div></div>
+    <div class ="item contentDiv"><div class = "" id = "goalEndDate"> <span> {function output here} </span> </div></div>
 
 
     <div class ="item titleDiv"> <div class = "innerSectionTitleDiv"><span class = "sectionTitle">days remaining</span></div></div>
-
-    <div class ="item contentDiv"> <div id = "daysLeft"> <span> 5 </span> </div></div>
+    <div class ="item contentDiv"> <div id = "daysLeft"> <span> {function output here} </span> </div></div>
 
     <div class ="item titleDiv">
         <div class = "buttonSection"> <button class = "submit disallowed"> record milestone </button>
@@ -99,166 +82,7 @@
     </div>
     <div class ="item bottomRow"></div>
 
-
-<script>
-
-// Functions
-
-var timeframe = 10 // duration of goal, in days
-var daysIn = 4 // pretend scenario
-
-var today = new Date();
-var todayStr = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear()
-// month is getMonth() + 1 because JavaScript thinks January is 0
-
-var startDate = new Date()
-startDate.setDate(today.getDate() - daysIn)
-var startDateStr = (startDate.getMonth() + 1) + "/" + startDate.getDate() + "/" + startDate.getFullYear()
-
-var endDate = new Date()
-endDate.setDate(startDate.getDate() + timeframe)
-var endDateStr = (endDate.getMonth() + 1) + "/" + endDate.getDate() + "/" + endDate.getFullYear()
-
-var daysLeft = endDate.getDate() - today.getDate()
-
-$("#today").html(todayStr)
-$("#goalEndDate").html(endDateStr)
-$("#daysLeft").html(daysLeft)
-
-function resizeInput() {
-    if($(this).val().length>=1){ $(this).attr('size', $(this).val().length+2); } // buffer can be added if need be (3 = 3 pixels)
-    else { $(this).attr('size', $(this).attr('placeholder').length+2); }
-}
-
-function startSizeInput() { $(this).attr('size', $(this).attr('placeholder').length+2); }
-
-function changeBackground(){
-    if($(this).val().length>0 & !isNaN($(this).val())){
-        $(this).css('background-color','#8A94B9')
-        $(".goalTypeIcon").css('opacity',1)
-    } else {
-        $(this).css('background-color','#C6C0CA')
-        $(".goalTypeIcon").css('opacity',.3)
-    }
-}
-
-function allowSubmit(){
-    if($(".goalTypeIcon").css("opacity") == 1) { $(".submit").removeClass("disallowed") }
-    else { $(".submit").addClass("disallowed") }
-}
-
-var weightlifting = { // will be passed in from DB
-    lift:"bench press",
-    goalWeight:"",
-    reps:"",
-    units:"",
-    baselineWeight:"",
-    thisMilestoneWeight:""
-}
-
-// these shouldn't be defined and calculated in this page
-// ... where should they be calculated? in a "goals" microservice?
-
-var goalStatus = {
-    startDate: startDate,
-    endDate: endDate,
-    daysLeft: daysLeft,
-    goalComplete: "",
-}
-
-var goal = {
-    goalID: "",
-    completeGoalString: "",
-    goalType: weightlifting, //
-    status: goalStatus
-}
-
-
-var liftObject = {
-    userID:"", // do we want this associated with each goal object?
-    goalID:"",
-    completeGoalString:"",
-    goalType: "weightlifting",
-    goalStatus: "", // options: in-progress, achieved, expired
-    dateAchieved:"", // not needed for any basic functionality, but could be useful for backwards-looking dashboard
-    depositPaid:"", // payment-related, think about this down the road
-    lift: "squat", //
-    reps: "5",
-    units:"lbs",
-    goalWeight:"250",
-    baselineWeight:"175",
-    thisMilestoneWeight:"225",
-    startDate:"",
-    endDate:""
-}
-
-// occurs on page load
-function fillMilestoneFields(){
-    $(".lift").html(goal['goalType'].lift)
-    $(".goalWeight").html(liftObject.goalWeight)
-    $(".baselineWeight").html(liftObject.baselineWeight)
-    $(".lastMilestoneWeight").html(liftObject.thisMilestoneWeight)
-    $("#thisMilestoneWeight").attr('placeholder',liftObject.thisMilestoneWeight)
-    $(".units").html(liftObject.units)
-    $(".reps").html(liftObject.reps)
-}
-
-// occurs on button click
-function sendGoalToDB(){
-  $.ajax({
-        url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
-        type: "POST",
-        data: liftObjectJSON,
-        dataType: 'json', // lowercase is always preferered though jQuery does it, too.
-        success: function(){},
-        error: function(){}
-    });
-}
-
-// Event Handlers
-
-$('window')
-    // .on('load',getGoalFromDB())
-    // .on('load',parseLiftObject())
-    .on('load',fillMilestoneFields())
-
-    // .on('load',startSizeInput())
-
-$('input[type="text"]')
-    .keyup(resizeInput)
-    .keyup(changeBackground)
-    .keyup(allowSubmit)
-    // .keyup(rewriteLiftObject)
-    .each(startSizeInput)
-
-$('.submit')
-    .click(sendGoalToDB) // should there be a confirm milestone step? what page should appear after clicking this button?
-
-// DATABASE INTERACTION / AJAX REQUEST SECTION
-
-// function getGoalFromDB(){
-//   $.ajax({
-//         url: "http://ec2-54-204-66-243.compute-1.amazonaws.com/admin/goals",
-//         type: "GET",
-//         data: liftObjectJSON, // how do we retrieve a specific lift object, based on a goal ID that was selected on the last page?
-//         dataType: 'json', // lowercase is always preferered though jQuery does it, too.
-//         success: function(){},
-//         error: function(){}
-//     });
-// }
-
-// function parseLiftObject(){
-//     var liftObject = JSON.parse(liftObjectJSON) // when parsed, can we still reference the JSON object, or does it need to be stringified again?
-// }
-
-// //unless we decide to add a last milestone date field, this is the only property that needs to be re-written based on user input
-// function rewriteLiftObject(){
-//     liftObject.thisMilestoneWeight = Number($("#thisMilestoneWeight").val()) // nothing else should change
-//     liftObjectJSON = JSON.stringify(liftObject)
-// }
-
-
-</script>
+<script src = "js/lift_milestone.js" type="text/javascript" > </script>
 
 </div>
 

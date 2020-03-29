@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(6,auto);
     grid-template-rows: repeat(9,auto) 250px;
-    grid-gap: 1px;
+    /*grid-gap: 1px;*/
 }
 
 .itemFirstCol{

@@ -200,9 +200,9 @@ function writeLiftObject(){
     liftObjectJSON = JSON.stringify(liftObject)
 }
 
-function sendGoalToDB(){
+function sendGoalToJSONServer(){
   $.ajax({
-        url: "http://ec2-18-209-157-101.compute-1.amazonaws.com",
+        url: "http://localhost:3000/liftGoals",
         type: "POST",
         data: liftObjectJSON,
         dataType: 'json', // lowercase is always preferered though jQuery does it, too.
@@ -228,7 +228,7 @@ $('input[type="text"]')
 
 
 $('.submit')
-    .click(sendGoalToDB)
+    .click(sendGoalToJSONServer)
 
 $('textarea')
     .keyup(fillIcons)
@@ -242,35 +242,3 @@ $(".timeframe")
     .click(fillIcons)
     .click(writeLiftObject)
     .click(allowSubmit)
-
-// OLD CODE - removing error pop-ups in favor of using fill
-
-// function checkError(){
-
-//     // baseline > goal error
-//     if ($("#weight").val().length > 0 & Number($("#baselineWeight").val()) >= Number($("#weight").val())) { $("#baselineExceedsGoalError").css("visibility","visible") }
-//     else { $("#baselineExceedsGoalError").css("visibility","hidden") }
-
-//     // non-numerical weight error
-//     if ($("#weight").val().length>0 & isNaN($("#weight").val())) { $("#weightError").css("visibility","visible") }
-//     else { $("#weightError").css("visibility","hidden") }
-
-//     // non-standard units error
-//     if ($("#units").val().length>0 & $("#units").val() != "kg" & $("#units").val() != "lbs"){ $("#unitsError").css("visibility","visible") }
-//     else { $("#unitsError").css("visibility","hidden") }
-
-//     // non-numerical reps error
-//     if($("#reps").val().length>0 & isNaN($("#reps").val())){
-//         $("#repsError").css("visibility","visible");
-//     } else {
-//         $("#repsError").css("visibility","hidden");
-//     }
-
-//     // non-numerical baseline weight error
-//     if($("#baselineWeight").val().length>0 & isNaN($("#baselineWeight").val())){
-//         $("#baselineWeightError").css("visibility","visible");
-//     } else {
-//         $("#baselineWeightError").css("visibility","hidden");
-//     }
-// }
-
