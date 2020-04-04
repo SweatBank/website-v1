@@ -106,6 +106,7 @@ function getLiftObject(){
         type: "GET",
         dataType: 'json',
         success: function(liftGoals){
+            liftGoalsJSON = liftGoals.json()
             console.log(liftGoals)
             console.log(liftGoals.length)
             var len = liftGoals.length;
@@ -116,6 +117,7 @@ function getLiftObject(){
             //     var baselineWeight = liftGoals[i].baselineWeight;
             // }
             console.log(liftGoals[0].lift)
+            console.log(liftGoalsJSON[0])
             console.log(liftGoals[2])
         },
         error: function(){
