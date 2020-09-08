@@ -30,18 +30,18 @@ const Content = ({ emailFormRef, scrollToEmailForm }) => {
         },
         extraDetailStyle: {
             fontFamily: 'roboto',
-            fontSize: 'calc(8px + 1.5vw)',
+            fontSize: 'calc(5px + 1.5vw)',
             color: '#404040' 
           },
           topQuoteStyle: {
             fontFamily: 'roboto',
             fontWeight: 'bold',
-            fontSize: 'calc(10px + 1.6vw)',
+            fontSize: 'calc(6px + 2vw)',
             color: '#404040' 
           },
           signUpStyle: {
             fontFamily: 'roboto',
-            fontSize: 'calc(12px + 0.7vw)',
+            fontSize: 'calc(7px + 1.2vw)',
             fontStyle: 'underline',
             color: 'primary' 
           },
