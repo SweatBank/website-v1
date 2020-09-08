@@ -1,8 +1,7 @@
 import React from 'react';
+import 'fontsource-roboto';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-import './Roboto/Roboto-Black.ttf';
 
 import droplet from './whitedroplet.svg';
 import SB_Logo from './logo.svg';

@@ -1,16 +1,13 @@
 import React from 'react';
-import Fragment from 'react';
-
-import ScreenshotCard from './ScreenshotCard';
-import ScreenshotCardSplit from './ScreenshotCardSplit';
-import Email from './EmailField';
-
+import 'fontsource-roboto';
 import { Grid, Button, Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import * as emailjs from 'emailjs-com';
 
-import './Roboto/Roboto-Black.ttf';
+import ScreenshotCard from './ScreenshotCard';
+import ScreenshotCardSplit from './ScreenshotCardSplit';
+import Email from './EmailField';
 
 import appIcon from './appIconRounded2.svg';
 import view1 from './png/view1.png';
