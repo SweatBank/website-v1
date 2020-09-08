@@ -1,13 +1,17 @@
 import React from 'react';
 import 'fontsource-roboto';
-import { Grid, Button, Typography } from '@material-ui/core';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import * as emailjs from 'emailjs-com';
+import { useSnackbar } from 'notistack';
 
-import ScreenshotCard from './ScreenshotCard';
-import ScreenshotCardSplit from './ScreenshotCardSplit';
-import Email from './EmailField';
+import { Grid, Typography } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { useRequestBetaForm } from './hooks/useRequestBetaForm';
+import { RequestBetaService } from './services/requestBetaService';
 
 import appIcon from './appIconRounded2.svg';
 import view1 from './png/view1.png';
@@ -19,68 +23,69 @@ import view6 from './png/view6.png';
 import view7 from './png/view7.png';
 import view8 from './png/view8.png';
 
-const Content = ({ emailFormRef, scrollToEmailForm }) => {
-    
-    const preventDefault = (event) => event.preventDefault();
-    const useStyles = makeStyles({
-        aboutSweatBankStyle: {
-          alignText: 'center',
-          fontFamily: 'roboto', 
-          color: '#404040'       
-        },
-        extraDetailStyle: {
-            fontFamily: 'roboto',
-            fontSize: 'calc(5px + 1.5vw)',
-            color: '#404040' 
-          },
-          topQuoteStyle: {
-            fontFamily: 'roboto',
-            fontWeight: 'bold',
-            fontSize: 'calc(6px + 2vw)',
-            color: '#404040' 
-          },
-          signUpStyle: {
-            fontFamily: 'roboto',
-            fontSize: 'calc(7px + 1.2vw)',
-            fontStyle: 'underline',
-            color: 'primary' 
-          },
-          sweatBankButtonStyle: {
-            // borderRadius: '100px',
-            // paddingTop: '65px', paddingBottom: '65px',
-            paddingRight: 'calc(30px + .5vw)', paddingLeft: 'calc(30px + .5vw)',
-          },
-          emailGridItemStyle: {
-            paddingTop: '40px',
-            alignText: 'center',
-            align: 'center'
-          }
-      });
-      
-    const classes = useStyles();
+import ScreenshotCard from './ScreenshotCard';
+import ScreenshotCardSplit from './ScreenshotCardSplit';
+import Email from './EmailField';
 
-    const [email, setEmail] = React.useState(null);
+const useStyles = makeStyles({
+    aboutSweatBankStyle: {
+      alignText: 'center',
+      fontFamily: 'roboto', 
+      color: '#404040'       
+    },
+    extraDetailStyle: {
+        fontFamily: 'roboto',
+        fontSize: 'calc(5px + 1.5vw)',
+        color: '#404040' 
+      },
+      topQuoteStyle: {
+        fontFamily: 'roboto',
+        fontWeight: 'bold',
+        fontSize: 'calc(6px + 2vw)',
+        color: '#404040' 
+      },
+      signUpStyle: {
+        fontFamily: 'roboto',
+        fontSize: 'calc(7px + 1.2vw)',
+        fontStyle: 'underline',
+        color: 'primary' 
+      },
+      sweatBankButtonStyle: {
+        // borderRadius: '100px',
+        // paddingTop: '65px', paddingBottom: '65px',
+        paddingRight: 'calc(30px + .5vw)', paddingLeft: 'calc(30px + .5vw)',
+      },
+      emailGridItemStyle: {
+        paddingTop: '40px',
+        alignText: 'center',
+        align: 'center'
+      }
+  });
+
+const Content = () => {
+    const classes = useStyles();
+    const { enqueueSnackbar } = useSnackbar();
+    const { scrollToForm, email, setEmail, clear } = useRequestBetaForm();
+    const [open, setOpen] = React.useState(false);
 
     const onSubmitRequestBeta = (e) => {
-        e.preventDefault()
-    
-        let templateParams = {
-            email: email,
-            to_name: 'sweatbankapp@gmail.com',
-            subject: 'BETA Requested',
-        };
-        emailjs.send(
-        'gmail_service',
-        'template_beta',
-         templateParams,
-        'user_NOMrgBHUx47Vs2iPFPdoV'
-        );
-        console.log(`A Beta request was successfully submitted for: ${email}`);
+        e.preventDefault();
+        const success = RequestBetaService.requestBetaByEmail(email);
+
+        if (success) {
+            enqueueSnackbar('Thanks for signing up!', {
+                variant: 'success'
+            });
+            clear();
+        } else {
+            enqueueSnackbar('Something went wrong', {
+                variant: 'error'
+            });
+        }
     }
 
     return(
     <React.Fragment>
-    
     <Grid 
         container 
         spacing = {2}
@@ -112,7 +117,7 @@ const Content = ({ emailFormRef, scrollToEmailForm }) => {
                 color = 'primary'>
                 <Link href="" onClick={(e) => {
                     e.preventDefault();
-                    scrollToEmailForm();
+                    scrollToForm();
                 }}>
                     sign up for our beta (coming September 2020)
                 </Link>
@@ -216,8 +221,8 @@ const Content = ({ emailFormRef, scrollToEmailForm }) => {
                 align = 'center'>
                 <br/><br/><br/>
                 <Email
+                    email={email}
                     setEmail={setEmail}
-                    emailFormRef={emailFormRef}
                 />
                 <br/>
             </Grid>

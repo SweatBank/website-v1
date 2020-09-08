@@ -1,5 +1,5 @@
 {
-  "name": "yarn-landing-page",
+  "name": "sweatbank.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "devextreme-react": "20.1.7",
     "emailjs-com": "^2.6.3",
     "fontsource-roboto": "^3.0.3",
+    "notistack": "^1.0.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",

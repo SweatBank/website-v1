@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import droplet from './whitedroplet.svg';
 import SB_Logo from './logo.svg';
 
+import { useRequestBetaForm } from './hooks/useRequestBetaForm';
+
 const useStyles = makeStyles(() => ({
     typographyStyles: {
         fontFamily: 'roboto',
@@ -19,8 +21,10 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Header = ({ scrollToEmailForm }) => {
+const Header = () => {
+    const { scrollToForm } = useRequestBetaForm();
     const classes = useStyles();
+
     return (
     <AppBar position = "static">
         <Toolbar>
@@ -32,7 +36,7 @@ const Header = ({ scrollToEmailForm }) => {
             <Button 
                 className = {classes.headerButtonStyle}
                 color="inherit"
-                onClick={() => scrollToEmailForm()}
+                onClick={() => scrollToForm()}
                 disableRipple = {true}
                 disableFocusRipple = {true}>
                     request beta
