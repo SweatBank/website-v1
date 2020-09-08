@@ -5,12 +5,12 @@ import ScreenshotCard from './ScreenshotCard';
 import ScreenshotCardSplit from './ScreenshotCardSplit';
 import Email from './EmailField';
 
-import { Grid, Button, Typography } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core';
-import Link from '../../yarn-landing-page/src/node_modules/@material-ui/core/Link';
-import { makeStyles } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core/styles';
-import TextField from '../../yarn-landing-page/src/node_modules/@material-ui/core/TextField';
+import { Grid, Button, Typography } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import { makeStyles } from '@material-ui/core/styles';
+import * as emailjs from 'emailjs-com';
 
-import '../../yarn-landing-page/src/node_modules/fontsource-roboto';
+import './Roboto/Roboto-Black.ttf';
 
 import appIcon from './appIconRounded2.svg';
 import view1 from './png/view1.png';
@@ -22,7 +22,7 @@ import view6 from './png/view6.png';
 import view7 from './png/view7.png';
 import view8 from './png/view8.png';
 
-const Content = () => {
+const Content = ({ emailFormRef, scrollToEmailForm }) => {
     
     const preventDefault = (event) => event.preventDefault();
     const useStyles = makeStyles({
@@ -62,6 +62,25 @@ const Content = () => {
       
     const classes = useStyles();
 
+    const [email, setEmail] = React.useState(null);
+
+    const onSubmitRequestBeta = (e) => {
+        e.preventDefault()
+    
+        let templateParams = {
+            email: email,
+            to_name: 'sweatbankapp@gmail.com',
+            subject: 'BETA Requested',
+        };
+        emailjs.send(
+        'gmail_service',
+        'template_beta',
+         templateParams,
+        'user_NOMrgBHUx47Vs2iPFPdoV'
+        );
+        console.log(`A Beta request was successfully submitted for: ${email}`);
+    }
+
     return(
     <React.Fragment>
     
@@ -94,7 +113,10 @@ const Content = () => {
                 <Typography
                 className = {classes.signUpStyle}
                 color = 'primary'>
-                <Link href="" onClick={preventDefault}>
+                <Link href="" onClick={(e) => {
+                    e.preventDefault();
+                    scrollToEmailForm();
+                }}>
                     sign up for our beta (coming September 2020)
                 </Link>
                 </Typography>
@@ -196,7 +218,10 @@ const Content = () => {
                 justify="space-evenly"
                 align = 'center'>
                 <br/><br/><br/>
-                <Email/>
+                <Email
+                    setEmail={setEmail}
+                    emailFormRef={emailFormRef}
+                />
                 <br/>
             </Grid>
 
@@ -209,6 +234,7 @@ const Content = () => {
                     variant = 'contained'
                     color = 'primary'
                     disabled = {false}
+                    onClick={(e) => onSubmitRequestBeta(e)}
                     size = 'medium'
                     >
                     request beta

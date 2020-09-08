@@ -1,0 +1,54 @@
+h1 {
+  font-family: Calibri;
+  color: black;
+}
+
+h2 {
+  font-family: Calibri;
+  color: black;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.App {
+  text-align: center;
+}
+
+img {
+  align: left;
+}
+
+.logo {
+  /* box-shadow: 1in; */
+}
+
+.appIcon {
+  height: 100px;
+  width: auto;
+}
+
+.screenshot {
+  height: auto;
+  width: 18.66vw;
+  /* width:20vw; */
+  align-content: center;
+  align-self: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.screenshotSplit {
+  height: auto;
+  /* width:18.66vw; */
+  width: 21vw;
+  align-content: center;
+  align-self: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

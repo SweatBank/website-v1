@@ -1,12 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useRef } from 'react';
 import './styles.css';
-import SB_Logo from './logo.svg';
-import appIcon from './appIconRounded2.svg';
-import { Button, Typography, Grid } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core';
-import { makeStyles } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core/styles';
-import IconButton from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core/IconButton';
-import MenuIcon from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/icons/Menu';
-import { Line } from '../../yarn-landing-page/src-bak/src/node_modules/react-chartjs-2';
+import { Button, Typography, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 import view1 from './png/view1.png';
@@ -54,16 +49,22 @@ const App = () => {
   //   chart()
   // }, [])
 
+  const emailFormRef = React.createRef();
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+  const scrollToEmailForm = () => {
+    scrollToRef(emailFormRef);
+  }
+
   return (
 
     <Grid container direction = 'column'>
       <Grid item>
-        <Header/>
+        <Header scrollToEmailForm={scrollToEmailForm} />
       </Grid>
       <Grid item container>
         <Grid item xs ={2} sm ={2} />
         <Grid item xs = {8} sm = {8} >
-          <Content/>
+          <Content emailFormRef={emailFormRef} scrollToEmailForm={scrollToEmailForm}/>
         </Grid>
         <Grid item xs ={2} sm ={2} />
       </Grid>

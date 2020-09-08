@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core';
-import { makeStyles } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core/styles';
-import '../../yarn-landing-page/src/node_modules/fontsource-roboto';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+import './Roboto/Roboto-Black.ttf';
 
 import droplet from './whitedroplet.svg';
 import SB_Logo from './logo.svg';
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Header = () => {
+const Header = ({ scrollToEmailForm }) => {
     const classes = useStyles();
     return (
     <AppBar position = "static">
@@ -32,6 +33,7 @@ const Header = () => {
             <Button 
                 className = {classes.headerButtonStyle}
                 color="inherit"
+                onClick={() => scrollToEmailForm()}
                 disableRipple = {true}
                 disableFocusRipple = {true}>
                     request beta

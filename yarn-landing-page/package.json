@@ -1,0 +1,43 @@
+{
+  "name": "yarn-landing-page",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@devexpress/dx-react-chart": "^2.7.1",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "chart.js": "^2.9.3",
+    "devextreme-react": "20.1.7",
+    "emailjs-com": "^2.6.3",
+    "fontsource-roboto": "^3.0.3",
+    "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://sweatbank.io --acl public-read",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

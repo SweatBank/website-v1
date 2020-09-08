@@ -1,10 +1,6 @@
 import React from 'react';
-import { makeStyles } from '../../yarn-landing-page/src-bak/src/node_modules/@material-ui/core/styles';
-import Card from '../../yarn-landing-page/src/node_modules/@material-ui/core/Card';
-import CardActions from '../../yarn-landing-page/src/node_modules/@material-ui/core/CardActions';
-import CardContent from '../../yarn-landing-page/src/node_modules/@material-ui/core/CardContent';
-import Button from '../../yarn-landing-page/src/node_modules/@material-ui/core/Button';
-import Typography from '../../yarn-landing-page/src/node_modules/@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
 
 const useStyles = makeStyles({
   root: {
