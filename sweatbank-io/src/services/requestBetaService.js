@@ -22,13 +22,50 @@ class EmailJsService {
   }
 }
 
+class RequestBetaCacheService {
+  static CACHE_KEY = '@sweatbank/beta-request';
+
+  static setEmail = (email) => {
+    const emails = this.getCachedEmailList();
+    emails.push(email);
+    this.setCachedEmailList(emails);
+  };
+
+  static hasEmail = (email) => {
+    return this.getCachedEmailList().includes(email);
+  }
+
+  static getCachedEmailList = () => {
+    const value = localStorage.getItem(this.CACHE_KEY);
+    if (value === null) return [];
+    return JSON.parse(value);
+  }
+
+  static setCachedEmailList = (l) => {
+    localStorage.setItem(this.CACHE_KEY, JSON.stringify(l));
+  }
+}
+
 export class RequestBetaService {
   static requestBetaByEmail = (email) => {
     try {
+      if (RequestBetaCacheService.hasEmail(email)) {
+        return {
+          success: false,
+          message: 'Beta already requested for this email',
+        }
+      }
       EmailJsService.sendRequestBetaEmail(email);
-      return true;
+      RequestBetaCacheService.setEmail(email);
+      return {
+        success: true,
+        message: null,
+      };
     } catch (e) {
-      return false;
+      return {
+        success: false,
+        message: 'Something Went Wrong',
+      };
     }
   }
 }

@@ -65,12 +65,24 @@ const useStyles = makeStyles({
 const Content = () => {
     const classes = useStyles();
     const { enqueueSnackbar } = useSnackbar();
-    const { scrollToForm, email, setEmail, clear } = useRequestBetaForm();
-    const [open, setOpen] = React.useState(false);
+    const {
+        scrollToForm,
+        formRef,
+        email,
+        setEmail,
+        isEmailValid,
+        clear,
+    } = useRequestBetaForm();
 
     const onSubmitRequestBeta = (e) => {
         e.preventDefault();
-        const success = RequestBetaService.requestBetaByEmail(email);
+        
+        if (!isEmailValid) {
+            // This should never be reached
+            return;
+        }
+
+        const { success, message } = RequestBetaService.requestBetaByEmail(email);
 
         if (success) {
             enqueueSnackbar('Thanks for signing up!', {
@@ -78,7 +90,7 @@ const Content = () => {
             });
             clear();
         } else {
-            enqueueSnackbar('Something went wrong', {
+            enqueueSnackbar(message, {
                 variant: 'error'
             });
         }
@@ -221,6 +233,7 @@ const Content = () => {
                 align = 'center'>
                 <br/><br/><br/>
                 <Email
+                    formRef={formRef}
                     email={email}
                     setEmail={setEmail}
                 />
@@ -235,7 +248,7 @@ const Content = () => {
                     className = {classes.sweatBankButtonStyle}
                     variant = 'contained'
                     color = 'primary'
-                    disabled = {false}
+                    disabled = {isEmailValid === false}
                     onClick={(e) => onSubmitRequestBeta(e)}
                     size = 'medium'
                     >
