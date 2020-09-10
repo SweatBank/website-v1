@@ -2,6 +2,8 @@ import React from 'react';
 import 'fontsource-roboto';
 import { useSnackbar } from 'notistack';
 
+import Scroll from './Scroll'
+
 import { Grid, Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
       topQuoteStyle: {
         fontFamily: 'roboto',
         fontWeight: 'bold',
-        fontSize: 'calc(6px + 2vw)',
+        fontSize: 'calc(16px + 2.8vw)',
         color: '#404040' 
       },
       signUpStyle: {
@@ -51,8 +53,6 @@ const useStyles = makeStyles({
         color: 'primary' 
       },
       sweatBankButtonStyle: {
-        // borderRadius: '100px',
-        // paddingTop: '65px', paddingBottom: '65px',
         paddingRight: 'calc(30px + .5vw)', paddingLeft: 'calc(30px + .5vw)',
       },
       emailGridItemStyle: {
@@ -98,6 +98,7 @@ const Content = () => {
 
     return(
     <React.Fragment>
+    <Scroll showBelow = {250}/>    
     <Grid 
         container 
         spacing = {2}
@@ -120,8 +121,7 @@ const Content = () => {
                 className = {classes.topQuoteStyle}
                 // variant = 'h5'
                 color = 'primary'>
-                Exercising regularly is hard, but simple. <br/>
-                We think your fitness app should be too.
+                Sweat. Log. Repeat.
                 </Typography>
                 <br/>
                 <Typography

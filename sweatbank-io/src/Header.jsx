@@ -15,9 +15,9 @@ const useStyles = makeStyles(() => ({
         flex: 1
     },
     headerButtonStyle: {
-        // focus: 'roboto',
-        // fontSize: '26px',
-        // flex: 1
+        '&:hover':{
+            // color: '#E2DBE2'
+        }
     }
 }));
 
@@ -37,6 +37,9 @@ const Header = () => {
                 className = {classes.headerButtonStyle}
                 color="inherit"
                 onClick={() => scrollToForm()}
+                // variant = 'text'
+                // disableElevation
+                disableElevation
                 disableRipple = {true}
                 disableFocusRipple = {true}>
                     request beta

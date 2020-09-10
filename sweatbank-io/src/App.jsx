@@ -4,6 +4,7 @@ import { SnackbarProvider } from 'notistack';
 import { Button, Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+
 import Header from './Header';
 import Content from './Content';
 
@@ -23,6 +24,7 @@ const App = () => {
       maxSnack={1}
       anchorOrigin ={{ horizontal: 'center', vertical: 'top' }}
     >
+      
       <Grid container direction = 'column'>
       <Grid item>
         <Header />
