@@ -36,9 +36,7 @@ class RequestBetaCacheService {
   }
 
   static getCachedEmailList = () => {
-    const value = localStorage.getItem(this.CACHE_KEY);
-    if (value === null) return [];
-    return JSON.parse(value);
+    return JSON.parse(localStorage.getItem(this.CACHE_KEY)) || [];
   }
 
   static setCachedEmailList = (l) => {

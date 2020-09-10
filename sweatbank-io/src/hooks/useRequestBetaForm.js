@@ -25,8 +25,7 @@ export function useRequestBetaForm() {
 
   const isEmailValid = React.useMemo(() => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValid = re.test(String(email).toLowerCase());
-    return isValid;
+    return re.test(String(email).toLowerCase());
   }, [email]);
 
   return {
