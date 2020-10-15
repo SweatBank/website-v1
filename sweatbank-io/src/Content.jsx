@@ -37,13 +37,19 @@ const useStyles = makeStyles({
     },
     extraDetailStyle: {
         fontFamily: 'roboto',
-        fontSize: 'calc(5px + 1.5vw)',
+        fontSize: 'calc(9px + 1.2vw)',
         color: '#404040' 
       },
       topQuoteStyle: {
         fontFamily: 'roboto',
         fontWeight: 'bold',
-        fontSize: 'calc(16px + 2.8vw)',
+        fontSize: 'calc(8px + 1.8vw)',
+        color: '#404040' 
+      },
+      topQuoteSubtextStyle: {
+        fontFamily: 'roboto',
+        // fontWeight: 'bold',
+        fontSize: 'calc(8px + 0.8vw)',
         color: '#404040' 
       },
       signUpStyle: {
@@ -104,14 +110,7 @@ const Content = () => {
         spacing = {2}
         justify = 'space-evenly'
         // alignItems = "center"
-    >
-
-            {/* <Grid 
-                item xs ={12} 
-                justify="space-evenly">
-                <img src = {appIcon} className = 'appIcon' />
-            </Grid> */}
-            
+    >       
             <Grid item xs ={12} >
                 <br/>
                 <br/>
@@ -119,10 +118,15 @@ const Content = () => {
                 <br/>
                 <Typography
                 className = {classes.topQuoteStyle}
-                // variant = 'h5'
                 color = 'primary'>
-                Sweat. Log. Repeat.
+                A fun and simple tool for people who want to sweat more.
                 </Typography>
+                {/* <Typography
+                className = {classes.topQuoteSubtextStyle}
+                color = 'primary'>
+                A simple goal setting app for people who want to move more.
+                </Typography> */}
+                <br/>
                 <br/>
                 <Typography
                 className = {classes.signUpStyle}
@@ -131,7 +135,7 @@ const Content = () => {
                     e.preventDefault();
                     scrollToForm();
                 }}>
-                    sign up for our beta (coming September 2020)
+                    sign up for our beta
                 </Link>
                 </Typography>
                 <br/>
@@ -263,18 +267,8 @@ const Content = () => {
             <Grid item xs ={12} /> 
             <Grid item xs ={12} /> 
             {/* empty grids */}    
-            
-            {/* <Grid 
-                item xs ={12} 
-                justify="space-evenly">
-                <img src = {appIcon} className = 'appIcon' />
-            </Grid> */}
-
         </Grid>
-        </React.Fragment>
-        
-
-        
+        </React.Fragment>    
     ) 
 };
 
