@@ -43,13 +43,13 @@ const useStyles = makeStyles({
       topQuoteStyle: {
         fontFamily: 'roboto',
         fontWeight: 'bold',
-        fontSize: 'calc(8px + 1.8vw)',
+        fontSize: 'calc(11px + 2.0vw)',
         color: '#404040' 
       },
       topQuoteSubtextStyle: {
         fontFamily: 'roboto',
         // fontWeight: 'bold',
-        fontSize: 'calc(8px + 0.8vw)',
+        fontSize: 'calc(10px + 1.0vw)',
         color: '#404040' 
       },
       signUpStyle: {
@@ -119,7 +119,7 @@ const Content = () => {
                 <Typography
                 className = {classes.topQuoteStyle}
                 color = 'primary'>
-                A fun and simple tool for people who want to sweat more.
+                A simple tool for people who want to sweat more.
                 </Typography>
                 {/* <Typography
                 className = {classes.topQuoteSubtextStyle}
